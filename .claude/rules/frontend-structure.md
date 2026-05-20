@@ -15,6 +15,7 @@ These rules define how we organize the matrimony frontend as the project grows.
 - Next.js 16 App Router
 - TypeScript
 - Tailwind CSS 4
+- shadcn/ui
 - TanStack Query
 - Redux Toolkit
 - Shared UI wrappers on top of base primitives when a design-system layer exists
@@ -41,6 +42,7 @@ src/
       feedback/
       navigation/
       layout/
+      shadcn wrappers and app-level variants
     shared/
   features/
     auth/
@@ -134,6 +136,39 @@ app/(auth)/signup/page.tsx
   -> features/auth/components/sign-up-form.tsx
   -> components/ui/form/text-field.tsx
 ```
+
+## Component Reuse Rule
+
+- Before creating a new component, first check whether the same or a close component already exists.
+- Reuse existing shared or feature components by default.
+- Prefer reusing or extending shadcn components before building raw Tailwind versions of the same UI pattern.
+- Do not create a second component only because spacing, copy, icon position, or a minor visual detail is different.
+- If the difference is small, extend the existing component through props, variants, slots, composition, or a higher-order wrapper.
+- Create a brand-new component only when the behavior, structure, or ownership is meaningfully different.
+
+Check in this order before creating something new:
+
+1. `components/ui/*`
+2. `components/shared/*`
+3. `features/<feature>/components/*`
+4. route-local private folders such as `_components`
+
+Prefer these adaptation strategies:
+
+- add a variant prop
+- add layout slots
+- compose the component with children
+- wrap the existing component with a higher-order component when the visual difference is small but repeated
+- extract shared parts from two near-duplicate components into one base component
+
+## Shadcn-First Rule
+
+- Prefer shadcn/ui for reusable controls such as buttons, inputs, cards, dialogs, dropdowns, tabs, sheets, tables, badges, and form primitives.
+- Do not build a raw Tailwind replacement for a component that already exists in shadcn unless there is a strong product reason.
+- If the needed component is missing, add it through the shadcn CLI first, then customize it through variants, composition, or wrappers.
+- Keep app-specific visual opinions in wrappers around shadcn components instead of forking the same component pattern repeatedly.
+- Use raw Tailwind directly for page shells, section layout, responsive grids, spacing composition, and very small non-reusable wrappers.
+- When a design differs only slightly, create an app wrapper or higher-order component around the shadcn primitive instead of cloning it.
 
 ## Query And Redux Ownership
 

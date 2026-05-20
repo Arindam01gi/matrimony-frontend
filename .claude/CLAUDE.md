@@ -41,6 +41,12 @@ Before writing or reorganizing code, read:
 
 ## Design System Rules
 
+- Prefer shadcn/ui components over raw Tailwind markup for reusable UI.
+- Use raw Tailwind directly for page layout, spacing structure, and tiny one-off wrappers only.
+- Always check whether a component already exists before creating a new one.
+- Reuse existing components by default.
+- If the design difference is small, prefer composition, variants, or a higher-order wrapper instead of duplicating the component.
+- If a reusable UI element is needed, first check whether a shadcn component already exists in `components/ui` or should be added there.
 - Do not use raw design primitives directly across feature code when a wrapped app component should exist.
 - Shared visual building blocks belong in shared UI folders.
 - Feature code should consume branded wrappers/composed components, not ad hoc one-off styling every time.

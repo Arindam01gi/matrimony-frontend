@@ -7,6 +7,8 @@ Use this folder for persistent team rules that should survive across feature wor
 - `frontend-structure.md`
   - Source tree conventions
   - Design vs logic separation
+  - Component reuse policy
+  - shadcn-first UI policy
   - TanStack Query and Redux ownership
   - File-size limits
   - Naming and composition rules
