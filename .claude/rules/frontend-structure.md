@@ -170,6 +170,13 @@ Prefer these adaptation strategies:
 - Use raw Tailwind directly for page shells, section layout, responsive grids, spacing composition, and very small non-reusable wrappers.
 - When a design differs only slightly, create an app wrapper or higher-order component around the shadcn primitive instead of cloning it.
 
+## Global CSS Rule
+
+- `app/globals.css` must only contain Tailwind imports, shadcn imports, design tokens, font variables, theme variables, and minimal base resets.
+- Colors, font mappings, radius tokens, and other cross-app theme tokens belong in `app/globals.css`.
+- Do not place component-specific CSS, page-specific CSS, feature CSS, animation rules for a single screen, or custom utility collections in `app/globals.css`.
+- Build UI with shadcn components and Tailwind classes instead of writing custom global selectors.
+
 ## Query And Redux Ownership
 
 ### TanStack Query owns

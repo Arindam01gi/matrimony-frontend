@@ -43,6 +43,8 @@ Before writing or reorganizing code, read:
 
 - Prefer shadcn/ui components over raw Tailwind markup for reusable UI.
 - Use raw Tailwind directly for page layout, spacing structure, and tiny one-off wrappers only.
+- `app/globals.css` is reserved for Tailwind imports, design tokens, font tokens, theme variables, and minimal base-layer defaults only.
+- Do not add component styling, page-specific rules, utility classes, or feature CSS to `app/globals.css`.
 - Always check whether a component already exists before creating a new one.
 - Reuse existing components by default.
 - If the design difference is small, prefer composition, variants, or a higher-order wrapper instead of duplicating the component.
