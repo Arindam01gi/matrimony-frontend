@@ -219,6 +219,13 @@ Prefer these adaptation strategies:
 - Types: `something.types.ts`
 - Constants: `SOMETHING_CONSTANT.ts` only for true constants; otherwise prefer `something.constants.ts`
 
+## TypeScript Safety Rule
+
+- Never use `any`.
+- Never use `unknown`.
+- Prefer explicit prop interfaces, concrete event types, typed content objects, and narrow unions.
+- If a value needs refinement, model it with guards and precise types instead of falling back to broad escape hatches.
+
 ## File Size Limits
 
 - Preferred size for most files: up to 200 lines.

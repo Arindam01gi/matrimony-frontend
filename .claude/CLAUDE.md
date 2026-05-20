@@ -61,6 +61,12 @@ Before writing or reorganizing code, read:
 - Start splitting a file before it becomes difficult to scan.
 - Large forms should be split into sections, schemas, defaults, hooks, and submit handlers.
 
+## TypeScript Rules
+
+- Do not use `any` in application code.
+- Do not use `unknown` in application code.
+- Prefer explicit interfaces, discriminated unions, constrained generics, and concrete DOM or React event types.
+
 ## Verification
 
 - Run `pnpm lint` after relevant code changes.
