@@ -65,18 +65,18 @@ export function LandingHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 sm:flex">
-          <button
+          <Link
             className="cursor-pointer rounded-full border border-primary px-6 py-2 text-[14px] leading-5 font-semibold text-primary transition-all duration-150 hover:bg-primary/5 active:scale-95"
-            type="button"
+            href="/login"
           >
             Login
-          </button>
-          <button
+          </Link>
+          <Link
             className="cursor-pointer rounded-full bg-[#c70038] px-6 py-2 text-[14px] leading-5 font-semibold text-white shadow-md transition-all duration-150 hover:shadow-lg active:scale-95"
-            type="button"
+            href="/register"
           >
             Register Free
-          </button>
+          </Link>
         </div>
       </div>
     </header>

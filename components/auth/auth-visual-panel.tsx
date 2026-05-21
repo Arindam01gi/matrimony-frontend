@@ -1,0 +1,28 @@
+import Image from "next/image";
+
+import { authCopy } from "@/components/auth/auth-content";
+
+export function AuthVisualPanel() {
+  return (
+    <section className="relative hidden overflow-hidden bg-surface-dim md:flex md:w-1/2 lg:w-3/5">
+      <Image
+        alt="Traditional Bengali wedding detail with henna, bangles, and red silk."
+        className="object-cover opacity-95 grayscale-[12%] sepia-[8%] transition-transform duration-[10000ms] hover:scale-110"
+        fill
+        priority
+        quality={100}
+        sizes="(min-width: 1024px) 60vw, 50vw"
+        src="/images/auth/login-heritage.jpg"
+      />
+
+      <div className="absolute top-12 left-12 z-10 max-w-sm rounded-xl bg-inverse-surface/55 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+        <h1 className="font-heading text-2xl leading-8 font-semibold tracking-tight text-primary-fixed-dim italic">
+          {authCopy.brand}
+        </h1>
+        <p className="mt-2 text-base leading-6 text-surface-bright/90">
+          {authCopy.visualDescription}
+        </p>
+      </div>
+    </section>
+  );
+}
