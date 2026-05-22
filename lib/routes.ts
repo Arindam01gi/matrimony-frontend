@@ -1,3 +1,4 @@
+export const DISCOVERY_PATH = "/discovery";
 export const PROFILE_DETAILS_PATH = "/profile-details";
 export const PARTNER_PREFERENCE_PATH = "/partner-preference";
 export const MY_PROFILE_PATH = "/my-profile";
