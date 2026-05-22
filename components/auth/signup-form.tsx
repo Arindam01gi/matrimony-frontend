@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { AUTH_LOGIN_PATH } from "@/lib/routes";
 
 export function SignupForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -25,7 +26,7 @@ export function SignupForm() {
     <form className="space-y-5" onSubmit={handleSubmit}>
       <Link
         className="inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-primary transition-transform hover:-translate-x-1"
-        href="/login"
+        href={AUTH_LOGIN_PATH}
       >
         <ArrowLeft className="size-4" />
         Back to Login

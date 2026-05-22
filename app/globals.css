@@ -190,3 +190,34 @@
     font-family: var(--font-playfair-display);
   }
 }
+
+@layer components {
+  .preference-slider {
+    height: 6px;
+    appearance: none;
+    border-radius: 9999px;
+    background: var(--surface-container-highest);
+    outline: none;
+  }
+
+  .preference-slider::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+    appearance: none;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    border-radius: 9999px;
+    background: var(--primary);
+    box-shadow: 0 0 10px rgba(154, 0, 41, 0.3);
+  }
+
+  .preference-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    border-radius: 9999px;
+    background: var(--primary);
+    box-shadow: 0 0 10px rgba(154, 0, 41, 0.3);
+  }
+}

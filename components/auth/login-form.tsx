@@ -1,18 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
 import { FormField } from "@/components/auth/form-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { AUTH_REGISTER_PATH, DISCOVERY_PATH } from "@/lib/routes";
 
 export function LoginForm() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    router.push(DISCOVERY_PATH);
   };
 
   return (
@@ -80,11 +84,11 @@ export function LoginForm() {
       </form>
 
       <div className="relative flex items-center py-4">
-        <div className="flex-grow border-t border-outline-variant/40" />
-        <span className="mx-4 flex-shrink text-xs leading-4 font-medium tracking-[0.16em] text-on-surface-variant/60 uppercase">
+        <div className="grow border-t border-outline-variant/40" />
+        <span className="mx-4 shrink text-xs leading-4 font-medium tracking-[0.16em] text-on-surface-variant/60 uppercase">
           or continue with
         </span>
-        <div className="flex-grow border-t border-outline-variant/40" />
+        <div className="grow border-t border-outline-variant/40" />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -147,7 +151,7 @@ export function LoginForm() {
           Don&apos;t have an account?
           <Link
             className="ml-2 cursor-pointer font-semibold text-primary transition-colors hover:text-primary-container hover:underline"
-            href="/register"
+            href={AUTH_REGISTER_PATH}
           >
             Create Profile
           </Link>

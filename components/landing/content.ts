@@ -9,7 +9,7 @@ import type {
 export const landingNavItems: LandingNavItem[] = [
   { href: "#discovery", label: "Discovery", isActive: true },
   { href: "#stories", label: "Success Stories" },
-  { href: "#premium", label: "Premium" },
+  { href: "/premium", label: "Premium" },
   { href: "#help", label: "Help Center" },
 ];
 

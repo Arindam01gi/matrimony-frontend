@@ -1,13 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { landingNavItems } from "@/components/landing/content";
 import { cn } from "@/lib/utils";
+import { AUTH_LOGIN_PATH, AUTH_REGISTER_PATH } from "@/lib/routes";
 
 export function LandingHeader() {
+  const pathname = usePathname();
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
@@ -48,32 +51,39 @@ export function LandingHeader() {
         </div>
 
         <nav className="hidden items-center gap-10 md:flex">
-          {landingNavItems.map((item) => (
-            <Link
-              key={item.label}
-              className={cn(
-                "rounded-lg px-4 py-2 text-[14px] leading-5 font-semibold tracking-[0.01em] transition-colors",
-                item.isActive
-                  ? "text-primary hover:bg-surface-container-high"
-                  : "text-on-surface-variant hover:bg-surface-container-high hover:text-foreground",
-              )}
-              href={item.href}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {landingNavItems.map((item) => {
+            const isActive =
+              item.href.startsWith("/")
+                ? pathname === item.href
+                : pathname === "/" && item.isActive;
+
+            return (
+              <Link
+                key={item.label}
+                className={cn(
+                  "rounded-lg px-4 py-2 text-[14px] leading-5 font-semibold tracking-[0.01em] transition-colors",
+                  isActive
+                    ? "text-primary hover:bg-surface-container-high"
+                    : "text-on-surface-variant hover:bg-surface-container-high hover:text-foreground",
+                )}
+                href={item.href}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-4 sm:flex">
           <Link
             className="cursor-pointer rounded-full border border-primary px-6 py-2 text-[14px] leading-5 font-semibold text-primary transition-all duration-150 hover:bg-primary/5 active:scale-95"
-            href="/login"
+            href={AUTH_LOGIN_PATH}
           >
             Login
           </Link>
           <Link
             className="cursor-pointer rounded-full bg-[#c70038] px-6 py-2 text-[14px] leading-5 font-semibold text-white shadow-md transition-all duration-150 hover:shadow-lg active:scale-95"
-            href="/register"
+            href={AUTH_REGISTER_PATH}
           >
             Register Free
           </Link>
