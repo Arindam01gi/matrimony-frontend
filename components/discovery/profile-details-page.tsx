@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
-import { DISCOVERY_PATH } from "@/lib/routes";
 
 import {
   BadgeCheck,
@@ -12,7 +10,6 @@ import {
   Heart,
   Languages,
   MapPin,
-  Menu,
   MessageCircle,
   Music2,
   PersonStanding,
@@ -70,8 +67,6 @@ const lifestyle = [
   },
 ];
 
-const navItems = ["Discovery", "Likes", "Chat", "Profile"];
-
 export function ProfileDetailsPage() {
   const [activeImage, setActiveImage] = useState<(typeof gallery)[number]>(
     gallery[0],
@@ -79,7 +74,6 @@ export function ProfileDetailsPage() {
 
   return (
     <div className="min-h-screen bg-background text-on-surface">
-      <AppHeader />
       <main className="mx-auto max-w-[1200px] px-5 pt-24 pb-36 md:px-10">
         <div className="grid grid-cols-12 items-start gap-8">
           <aside className="col-span-12 space-y-4 lg:sticky lg:top-24 lg:col-span-5">
@@ -243,57 +237,6 @@ export function ProfileDetailsPage() {
       </main>
       <FloatingActionBar />
     </div>
-  );
-}
-
-function AppHeader() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-outline-variant/30 bg-surface/80 shadow-sm backdrop-blur-md">
-      <div className="flex h-16 items-center justify-between px-5 md:px-10">
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            aria-label="Open navigation menu"
-            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full text-primary transition-colors hover:bg-surface-container-high"
-          >
-            <Menu className="size-6" />
-          </button>
-          <Link
-            href="/"
-            className="font-heading text-2xl leading-8 font-semibold text-primary italic"
-          >
-            Shubho Shomproti
-          </Link>
-        </div>
-
-        <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item, index) => (
-            <Link
-              key={item}
-              href={index === 0 ? DISCOVERY_PATH : "#"}
-              className={[
-                "text-sm leading-5 font-semibold transition-colors",
-                index === 0
-                  ? "text-primary"
-                  : "text-on-surface-variant hover:text-primary",
-              ].join(" ")}
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="relative size-10 overflow-hidden rounded-full border-2 border-primary-container">
-          <Image
-            fill
-            sizes="40px"
-            src="/images/landing/stories/srijita-amit.jpg"
-            alt="Signed-in member profile photo"
-            className="object-cover"
-          />
-        </div>
-      </div>
-    </header>
   );
 }
 

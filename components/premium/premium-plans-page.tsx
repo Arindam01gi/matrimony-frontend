@@ -1,16 +1,12 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import {
-  AtSign,
   BadgeCheck,
   Brain,
   CheckCircle2,
   Heart,
   Rocket,
-  Share2,
 } from "lucide-react";
-
-import { LandingHeader } from "@/components/landing/landing-header";
 
 const TRUST_IMAGE_SRC =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCzH7_1xK0_Ib4thw1Vwkbw-AdWyVfxbwpfoyh3iXUTjOzYqCtpaZdi-uUNxrC3irqiXPmYMdfBd-TU8Ba0PXZVz9snvwtzqdgzOUItMkgv94T6aKWl12qvnNlqRUzCpQZxS1YEKLPzL0MYIGDVLR2KIYUIPst6XnN00L4uzU4DslH2sE5Kce-sdV09mJuZ4zZ5RwU_SZ19o-FzfQAheepjENWUOWyKEztKTejy542kWneDWHpO95gnACU4D-ZxszbYdHYAkaVHdNMW";
@@ -62,7 +58,6 @@ const plans = [
 export function PremiumPlansPage() {
   return (
     <div className="min-h-screen bg-surface">
-      <LandingHeader />
       <main className="pt-24 pb-18">
         <section className="mx-auto mb-7 max-w-[1200px] px-5 text-center md:px-[60px]">
           <h1 className="mx-auto max-w-4xl font-heading text-[2rem] leading-10 font-bold text-on-surface md:text-[2.5rem] md:leading-[48px]">
@@ -148,7 +143,6 @@ export function PremiumPlansPage() {
           </div>
         </section>
       </main>
-      <PremiumFooter />
     </div>
   );
 }
@@ -307,57 +301,5 @@ function RelationshipManagerMark() {
         strokeWidth="21"
       />
     </svg>
-  );
-}
-
-function PremiumFooter() {
-  return (
-    <footer className="mt-2 bg-[#221919] px-5 py-12 text-surface md:px-10">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <h2 className="mb-4 font-heading text-2xl leading-8 font-semibold italic text-white">
-            Shubho Shomproti
-          </h2>
-          <p className="max-w-sm text-sm leading-6 text-outline-variant">
-            The premier matrimonial destination for the global Bengali community. Find
-            your perfect match with elegance and trust.
-          </p>
-        </div>
-        <div>
-          <h3 className="mb-4 text-sm leading-5 font-semibold tracking-wider text-primary-fixed-dim uppercase">
-            Quick Links
-          </h3>
-          <ul className="space-y-2 text-xs leading-4 font-medium text-outline-variant">
-            {["How it Works", "Success Stories", "Safe Matrimony", "Help Center"].map(
-              (item) => (
-                <li key={item}>
-                  <a className="transition-colors hover:text-white" href="#">
-                    {item}
-                  </a>
-                </li>
-              ),
-            )}
-          </ul>
-        </div>
-        <div>
-          <h3 className="mb-4 text-sm leading-5 font-semibold tracking-wider text-primary-fixed-dim uppercase">
-            Contact
-          </h3>
-          <p className="text-xs leading-5 font-medium text-outline-variant">
-            support@shubhoshomproti.com
-          </p>
-          <p className="text-xs leading-5 font-medium text-outline-variant">
-            Kolkata, West Bengal, India
-          </p>
-          <div className="mt-4 flex gap-4 text-outline-variant">
-            <AtSign className="size-4" />
-            <Share2 className="size-4" />
-          </div>
-        </div>
-      </div>
-      <div className="mx-auto mt-12 max-w-[1200px] border-t border-outline/20 pt-8 text-center text-xs leading-4 font-medium text-outline-variant/60">
-        &copy; 2024 Shubho Shomproti. All rights reserved.
-      </div>
-    </footer>
   );
 }

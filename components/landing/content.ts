@@ -107,10 +107,10 @@ export const footerLinkGroups: FooterLinkGroup[] = [
   {
     title: "Quick Links",
     links: [
-      { href: "#", label: "Search Profiles" },
-      { href: "#stories", label: "Success Stories" },
-      { href: "#", label: "Safe Matrimony" },
-      { href: "#", label: "Contact Us" },
+      { href: "/discovery", label: "Search Profiles" },
+      { href: "/#stories", label: "Success Stories" },
+      { href: "/#discovery", label: "Safe Matrimony" },
+      { href: "/#help", label: "Contact Us" },
     ],
   },
   {
@@ -118,7 +118,7 @@ export const footerLinkGroups: FooterLinkGroup[] = [
     links: [
       { href: "#", label: "Privacy Policy" },
       { href: "#", label: "Terms of Use" },
-      { href: "#help", label: "Help Center" },
+      { href: "/#help", label: "Help Center" },
       { href: "#", label: "Report Issues" },
     ],
   },

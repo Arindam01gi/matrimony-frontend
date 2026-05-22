@@ -1,14 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import type { Dispatch, SetStateAction } from "react";
 import { useMemo, useState } from "react";
-import { CigaretteOff, Menu, Utensils, WineOff } from "lucide-react";
+import { CigaretteOff, Utensils, WineOff } from "lucide-react";
 
-import { DISCOVERY_PATH } from "@/lib/routes";
-
-const navItems = ["Discovery", "Likes", "Chat"];
 const motherTongues = ["Bengali", "English", "Hindi", "Sylheti"];
 const maritalStatuses = [
   "Never Married",
@@ -61,7 +56,6 @@ export function PartnerPreferencePage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-surface text-on-surface">
-      <PreferenceHeader />
       <main className="mx-auto max-w-[1000px] px-5 pt-24 pb-12 md:px-0">
         <section className="mb-8 px-0 text-center md:px-10 md:text-left">
           <h1 className="mb-2 font-heading text-[40px] leading-[48px] font-bold text-primary">
@@ -177,58 +171,6 @@ export function PartnerPreferencePage() {
       </main>
       <BackdropMark />
     </div>
-  );
-}
-
-function PreferenceHeader() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-outline-variant/30 bg-surface/80 shadow-sm backdrop-blur-md">
-      <div className="flex h-16 items-center justify-between px-5 md:px-10">
-        <div className="flex min-w-0 items-center gap-4">
-          <button
-            type="button"
-            aria-label="Open navigation menu"
-            className="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-primary transition-colors hover:bg-surface-container-high active:scale-95"
-          >
-            <Menu className="size-6" />
-          </button>
-          <Link
-            href="/"
-            className="truncate font-heading text-2xl leading-8 font-semibold text-primary italic"
-          >
-            Shubho Shomproti
-          </Link>
-        </div>
-
-        <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item, index) => (
-            <Link
-              key={item}
-              href={index === 0 ? DISCOVERY_PATH : "#"}
-              className={[
-                "text-sm leading-5 font-semibold transition-colors",
-                index === 0
-                  ? "text-primary"
-                  : "text-on-surface-variant hover:text-primary",
-              ].join(" ")}
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="relative size-10 shrink-0 overflow-hidden rounded-full border-2 border-primary-fixed-dim">
-          <Image
-            fill
-            priority
-            sizes="40px"
-            src="/images/landing/stories/ananya-rahul.jpg"
-            alt="Signed-in member profile photo"
-            className="object-cover"
-          />
-        </div>
-      </div>
-    </header>
   );
 }
 
