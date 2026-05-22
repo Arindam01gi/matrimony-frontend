@@ -8,7 +8,7 @@ import { useState, type FormEvent } from "react";
 import { FormField } from "@/components/auth/form-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { AUTH_REGISTER_PATH, DISCOVERY_PATH } from "@/lib/routes";
+import { AUTH_REGISTER_PATH, PROFILE_DETAILS_PATH } from "@/lib/routes";
 
 export function LoginForm() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export function LoginForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    router.push(DISCOVERY_PATH);
+    router.push(PROFILE_DETAILS_PATH);
   };
 
   return (

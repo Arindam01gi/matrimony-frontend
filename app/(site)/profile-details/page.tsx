@@ -8,6 +8,6 @@ export const metadata: Metadata = {
     "Review a premium Bengali matrimony profile with family, career, lifestyle, and connection details.",
 };
 
-export default function DiscoveryRoute() {
+export default function ProfileDetailsRoute() {
   return <ProfileDetailsPage />;
 }

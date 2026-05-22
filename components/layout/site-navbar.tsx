@@ -9,15 +9,15 @@ import { useEffect, useState } from "react";
 import {
   AUTH_LOGIN_PATH,
   AUTH_REGISTER_PATH,
-  DISCOVERY_PATH,
   MY_PROFILE_PATH,
   PARTNER_PREFERENCE_PATH,
+  PROFILE_DETAILS_PATH,
 } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: DISCOVERY_PATH, label: "Discovery" },
+  { href: PROFILE_DETAILS_PATH, label: "Discovery" },
   { href: PARTNER_PREFERENCE_PATH, label: "Partner Preferences" },
   { href: "/premium", label: "Premium" },
 ] as const;

@@ -107,7 +107,7 @@ export const footerLinkGroups: FooterLinkGroup[] = [
   {
     title: "Quick Links",
     links: [
-      { href: "/discovery", label: "Search Profiles" },
+      { href: "/profile-details", label: "Search Profiles" },
       { href: "/#stories", label: "Success Stories" },
       { href: "/#discovery", label: "Safe Matrimony" },
       { href: "/#help", label: "Contact Us" },
