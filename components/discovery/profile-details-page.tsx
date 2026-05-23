@@ -88,15 +88,15 @@ export function ProfileDetailsPage() {
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-8 text-white">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="rounded-full bg-secondary-container px-3 py-1 text-[10px] leading-4 font-bold tracking-[0.12em] text-on-secondary-container uppercase">
+                  <span className="type-eyebrow rounded-full bg-secondary-container px-3 py-1 text-on-secondary-container">
                     Premium Member
                   </span>
                   <BadgeCheck className="size-4 fill-white text-white" />
                 </div>
-                <h1 className="font-heading text-[32px] leading-10 font-semibold">
+                <h1 className="type-profile-name">
                   Ananya Das, 27
                 </h1>
-                <p className="mt-1 flex items-center gap-1 text-base leading-6 text-white/90">
+                <p className="type-body mt-1 flex items-center gap-1 text-white/90">
                   <MapPin className="size-4" />
                   Kolkata, West Bengal
                 </p>
@@ -135,7 +135,7 @@ export function ProfileDetailsPage() {
                 className="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-lg bg-surface-container-high text-primary transition-colors hover:bg-surface-container-highest"
               >
                 <Camera className="mb-1 size-5" />
-                <span className="text-[10px] leading-4 font-bold text-on-surface">
+                <span className="type-caption font-bold text-on-surface">
                   +12 More
                 </span>
               </button>
@@ -148,7 +148,7 @@ export function ProfileDetailsPage() {
               title="About Me"
               className="space-y-4"
             >
-              <p className="text-lg leading-7 text-on-surface-variant italic">
+              <p className="type-body-lg text-on-surface-variant italic">
                 &quot;A creative soul finding harmony between modern corporate life
                 and traditional Bengali values. I believe in meaningful
                 conversations, the smell of old books, and the magic of a perfect
@@ -158,7 +158,7 @@ export function ProfileDetailsPage() {
                 {interests.map((interest) => (
                   <span
                     key={interest}
-                    className="rounded-full border border-surface-variant bg-surface px-4 py-2 text-sm leading-5 font-semibold text-on-surface-variant"
+                    className="type-label rounded-full border border-surface-variant bg-surface px-4 py-2 text-on-surface-variant"
                   >
                     {interest}
                   </span>
@@ -196,15 +196,15 @@ export function ProfileDetailsPage() {
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                 {familyDetails.map(([label, value]) => (
                   <div key={label}>
-                    <p className="text-xs leading-4 font-medium tracking-[0.04em] text-on-surface-variant/70 uppercase">
+                    <p className="type-caption font-medium text-on-surface-variant/70 uppercase">
                       {label}
                     </p>
-                    <p className="mt-1 text-sm leading-5 font-semibold">{value}</p>
+                    <p className="type-label mt-1">{value}</p>
                   </div>
                 ))}
               </div>
               <div className="my-4 border-t border-surface-variant/50" />
-              <p className="text-base leading-6 text-on-surface-variant italic">
+              <p className="type-body text-on-surface-variant italic">
                 &quot;Ours is a close-knit, progressive family rooted in
                 traditional culture but with an open-minded approach to life&apos;s
                 modern changes.&quot;
@@ -220,10 +220,10 @@ export function ProfileDetailsPage() {
                     <div key={item.label} className="flex items-center gap-3">
                       <Icon className="size-6 text-on-surface-variant/60" />
                       <div>
-                        <p className="text-xs leading-4 font-medium text-on-surface-variant/70">
+                        <p className="type-caption font-medium text-on-surface-variant/70">
                           {item.label}
                         </p>
-                        <p className="text-sm leading-5 font-semibold">
+                        <p className="type-label">
                           {item.value}
                         </p>
                       </div>
@@ -260,7 +260,7 @@ function InfoCard({
     >
       <div className="mb-4 flex items-center gap-3 text-primary">
         {icon}
-        <h2 className="font-heading text-2xl leading-8 font-semibold text-on-surface">
+        <h2 className="type-section-title text-on-surface">
           {title}
         </h2>
       </div>
@@ -274,8 +274,8 @@ function DetailList({ items }: { items: Array<[string, string]> }) {
     <ul className="space-y-4">
       {items.map(([label, value]) => (
         <li key={label}>
-          <p className="text-sm leading-5 font-semibold text-primary">{label}</p>
-          <p className="mt-1 text-base leading-6 text-on-surface-variant">{value}</p>
+          <p className="type-label text-primary">{label}</p>
+          <p className="type-body mt-1 text-on-surface-variant">{value}</p>
         </li>
       ))}
     </ul>
@@ -288,23 +288,23 @@ function FloatingActionBar() {
       <div className="mx-auto flex max-w-[1200px] justify-end">
         <div className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-outline-variant/30 bg-surface/90 p-3 shadow-[0_4px_20px_rgba(0,0,0,0.08)] backdrop-blur-lg max-sm:w-full max-sm:justify-between">
           <div className="hidden px-4 md:block">
-            <p className="text-xs leading-4 font-medium text-on-surface-variant">
+            <p className="type-caption font-medium text-on-surface-variant">
               Ready to connect with
             </p>
-            <p className="font-heading text-lg leading-7 text-primary">
+            <p className="type-profile-name text-primary">
               Ananya Das?
             </p>
           </div>
           <button
             type="button"
-            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm leading-5 font-semibold text-white shadow-lg transition-all hover:brightness-110 active:scale-95 sm:px-8"
+            className="type-button inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-white shadow-lg transition-all hover:brightness-110 active:scale-95 sm:px-8"
           >
             <Heart className="size-5 fill-white" />
             <span>Send Interest</span>
           </button>
           <button
             type="button"
-            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-secondary-container px-5 py-3 text-sm leading-5 font-semibold text-on-secondary-container transition-all hover:brightness-105 active:scale-95 sm:px-8"
+            className="type-button inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-secondary-container px-5 py-3 text-on-secondary-container transition-all hover:brightness-105 active:scale-95 sm:px-8"
           >
             <MessageCircle className="size-5" />
             <span>Message</span>

@@ -48,10 +48,10 @@ export function MyProfilePage() {
                 />
               </div>
               <div>
-                <h2 className="text-sm leading-5 font-semibold text-on-surface">
+                <h2 className="type-label text-on-surface">
                   Ananya Das
                 </h2>
-                <p className="text-xs leading-4 font-medium text-on-surface-variant">
+                <p className="type-caption font-medium text-on-surface-variant">
                   Premium Member
                 </p>
               </div>
@@ -76,7 +76,7 @@ export function MyProfilePage() {
                     ].join(" ")}
                   >
                     <Icon className="size-6 shrink-0" />
-                    <span className="text-base leading-6">{item.label}</span>
+                    <span className="type-body">{item.label}</span>
                   </button>
                 );
               })}
@@ -86,7 +86,7 @@ export function MyProfilePage() {
                 className="flex cursor-pointer items-center gap-2 rounded-lg p-3 text-left text-destructive transition-all duration-300 hover:bg-destructive/10 hover:pl-6"
               >
                 <LogOut className="size-6 shrink-0" />
-                <span className="text-base leading-6">Logout</span>
+                <span className="type-body">Logout</span>
               </button>
             </nav>
           </div>
@@ -97,10 +97,10 @@ export function MyProfilePage() {
           aria-live="polite"
         >
           <div>
-            <h1 className="mb-2 font-heading text-[32px] leading-10 font-semibold text-on-surface">
+            <h1 className="type-app-title mb-2 text-on-surface">
               Settings
             </h1>
-            <p className="max-w-3xl text-base leading-6 text-on-surface-variant">
+            <p className="type-body max-w-3xl text-on-surface-variant">
               Manage your account preferences and security settings to ensure the
               best experience.
             </p>
@@ -109,11 +109,11 @@ export function MyProfilePage() {
           <div className="grid grid-cols-1 gap-4">
             <SettingsCard>
               <div className="mb-4 flex items-center justify-between gap-4">
-                <h2 className="font-heading text-2xl leading-8 font-semibold text-primary">
+                <h2 className="type-section-title text-primary">
                   Account Details
                 </h2>
                 <Link
-                  className="inline-flex cursor-pointer items-center gap-1 text-sm leading-5 font-semibold text-primary transition-colors hover:underline"
+                  className="type-button inline-flex cursor-pointer items-center gap-1 text-primary transition-colors hover:underline"
                   href={EDIT_PROFILE_PATH}
                 >
                   <Edit3 className="size-4" />
@@ -129,7 +129,7 @@ export function MyProfilePage() {
             </SettingsCard>
 
             <SettingsCard>
-              <h2 className="mb-4 font-heading text-2xl leading-8 font-semibold text-primary">
+              <h2 className="type-section-title mb-4 text-primary">
                 Security & Privacy
               </h2>
               <div className="space-y-4">
@@ -145,7 +145,7 @@ export function MyProfilePage() {
                 <div className="pt-2">
                   <button
                     type="button"
-                    className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-6 py-2 text-sm leading-5 font-semibold text-on-primary transition-all hover:brightness-110 active:scale-95"
+                    className="type-button inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-6 py-2 text-on-primary transition-all hover:brightness-110 active:scale-95"
                   >
                     <LockKeyhole className="size-4" />
                     <span>Change Password</span>
@@ -155,7 +155,7 @@ export function MyProfilePage() {
             </SettingsCard>
 
             <SettingsCard>
-              <h2 className="mb-4 font-heading text-2xl leading-8 font-semibold text-primary">
+              <h2 className="type-section-title mb-4 text-primary">
                 App Experience
               </h2>
               <div className="grid gap-8 md:grid-cols-2">
@@ -166,7 +166,7 @@ export function MyProfilePage() {
                 >
                   <button
                     type="button"
-                    className="mt-2 cursor-pointer text-xs leading-4 font-semibold text-primary"
+                    className="type-caption mt-2 cursor-pointer font-semibold text-primary"
                   >
                     Manage Alerts -&gt;
                   </button>
@@ -179,7 +179,7 @@ export function MyProfilePage() {
                 >
                   <select
                     aria-label="Language Preference"
-                    className="mt-3 w-full cursor-pointer rounded-lg border border-outline-variant/20 bg-transparent px-0 py-1 text-sm leading-5 text-on-surface-variant outline-none focus:ring-0"
+                    className="type-body-sm mt-3 w-full cursor-pointer rounded-lg border border-outline-variant/20 bg-transparent px-0 py-1 text-on-surface-variant outline-none focus:ring-0"
                     defaultValue="English (US)"
                   >
                     <option>English (US)</option>
@@ -207,10 +207,10 @@ function SettingsCard({ children }: { children: React.ReactNode }) {
 function ProfileField({ label, value }: { label: string; value: string }) {
   return (
     <div className="space-y-2">
-      <label className="block text-xs leading-4 font-medium text-on-surface-variant">
+      <label className="type-caption block font-medium text-on-surface-variant">
         {label}
       </label>
-      <div className="rounded-lg border border-outline-variant/20 bg-surface p-2 text-base leading-6 text-on-surface">
+      <div className="type-body rounded-lg border border-outline-variant/20 bg-surface p-2 text-on-surface">
         {value}
       </div>
     </div>
@@ -229,8 +229,8 @@ function ToggleRow({
   return (
     <div className="flex items-center justify-between gap-4 border-b border-outline-variant/10 py-2">
       <div className="min-w-0">
-        <h3 className="text-sm leading-5 font-semibold text-on-surface">{title}</h3>
-        <p className="text-sm leading-5 text-on-surface-variant">{description}</p>
+        <h3 className="type-label text-on-surface">{title}</h3>
+        <p className="type-body-sm text-on-surface-variant">{description}</p>
       </div>
       <button
         type="button"
@@ -268,9 +268,9 @@ function ExperiencePanel({
     <div className="rounded-xl border border-outline-variant/20 bg-surface p-4">
       <div className="mb-2 flex items-center gap-2 text-primary">
         {icon}
-        <h3 className="text-sm leading-5 font-semibold text-on-surface">{title}</h3>
+        <h3 className="type-label text-on-surface">{title}</h3>
       </div>
-      {text ? <p className="text-sm leading-5 text-on-surface-variant">{text}</p> : null}
+      {text ? <p className="type-body-sm text-on-surface-variant">{text}</p> : null}
       {children}
     </div>
   );

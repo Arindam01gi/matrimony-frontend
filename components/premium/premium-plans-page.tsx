@@ -60,11 +60,11 @@ export function PremiumPlansPage() {
     <div className="min-h-screen bg-surface">
       <main className="pt-24 pb-18">
         <section className="mx-auto mb-7 max-w-[1200px] px-5 text-center md:px-[60px]">
-          <h1 className="mx-auto max-w-4xl font-heading text-[2rem] leading-10 font-bold text-on-surface md:text-[2.5rem] md:leading-[48px]">
+          <h1 className="type-hero mx-auto max-w-4xl text-on-surface">
             Elevate Your Journey to{" "}
             <span className="text-primary italic">Sampurna</span>
           </h1>
-          <p className="mx-auto mt-2 max-w-2xl text-lg leading-7 text-on-surface-variant">
+          <p className="type-body-lg mx-auto mt-2 max-w-2xl text-on-surface-variant">
             Discover meaningful connections with our bespoke premium services tailored
             for the discerning Bengali community.
           </p>
@@ -77,10 +77,10 @@ export function PremiumPlansPage() {
                 <span className="mb-5 inline-flex size-12 items-center justify-center rounded-full bg-primary-fixed-dim/60 text-primary">
                   <Brain className="size-5" />
                 </span>
-                <h2 className="mb-2 font-heading text-2xl leading-8 font-semibold">
+                <h2 className="type-section-title mb-2">
                   Relationship Manager
                 </h2>
-                <p className="max-w-sm text-base leading-6 font-normal text-on-surface-variant">
+                <p className="type-body max-w-sm text-on-surface-variant">
                   A dedicated expert to curate profiles, manage introductions, and
                   provide personalized relationship guidance.
                 </p>
@@ -114,10 +114,10 @@ export function PremiumPlansPage() {
         <section className="mx-auto max-w-[1200px] px-5 md:px-[60px]">
           <div className="grid min-h-[432px] items-center gap-8 rounded-3xl bg-surface-container-high p-8 md:grid-cols-2">
             <div>
-              <h2 className="mb-4 font-heading text-[2rem] leading-10 font-semibold text-on-surface">
+              <h2 className="type-page-title mb-4 text-on-surface">
                 Built on Trust and Tradition
               </h2>
-              <p className="mb-6 max-w-xl text-base leading-6 text-on-surface-variant">
+              <p className="type-body mb-6 max-w-xl text-on-surface-variant">
                 We understand that finding a life partner is a deeply personal and
                 cultural journey. Our premium services are designed to respect these
                 values while providing modern tools to facilitate genuine matches.
@@ -160,10 +160,10 @@ function BenefitCard({
     <article className="flex min-h-0 items-center gap-5 rounded-xl border border-outline-variant/30 bg-surface-container-low p-6 transition-colors hover:border-primary/30">
       <span className="text-primary">{icon}</span>
       <div>
-        <h3 className="mb-1 text-sm leading-5 font-semibold text-on-surface">
+        <h3 className="type-card-title mb-1 text-on-surface">
           {title}
         </h3>
-        <p className="text-xs leading-4 text-on-surface-variant">{text}</p>
+        <p className="type-caption text-on-surface-variant">{text}</p>
       </div>
     </article>
   );
@@ -187,7 +187,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
       ].join(" ")}
     >
       {isGold ? (
-        <div className="absolute top-0 right-0 rounded-bl-xl bg-[#ffc000] px-6 py-1 text-xs leading-4 font-semibold tracking-[0.12em] text-secondary-foreground uppercase">
+        <div className="type-eyebrow absolute top-0 right-0 rounded-bl-xl bg-[#ffc000] px-6 py-1 text-secondary-foreground">
           Recommended
         </div>
       ) : null}
@@ -195,7 +195,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
       <div className="mb-5">
         <p
           className={[
-            "mb-1 text-sm leading-5 font-semibold tracking-[0.18em] uppercase",
+            "type-eyebrow mb-1",
             isGold ? "text-secondary-foreground" : "",
             isDark ? "text-outline-variant" : "",
             !isGold && !isDark ? "text-on-surface-variant" : "",
@@ -203,7 +203,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
         >
           {plan.eyebrow}
         </p>
-        <h3 className="font-heading text-2xl leading-8 font-semibold">{plan.name}</h3>
+        <h3 className="type-section-title">{plan.name}</h3>
       </div>
 
       <div
@@ -214,7 +214,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
           !isGold && !isDark ? "border-outline-variant/20" : "",
         ].join(" ")}
       >
-        <span className="font-heading text-[2rem] leading-10 font-bold">
+        <span className="type-page-title font-bold">
           &#8377;{plan.price}
         </span>
         <span className={isDark ? "text-outline-variant" : "text-on-surface-variant"}>
@@ -226,7 +226,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
         {plan.features.map((feature, index) => (
           <li
             className={[
-              "flex items-center gap-2 text-sm leading-5",
+              "type-body-sm flex items-center gap-2",
               isDark ? "text-surface-variant" : "text-on-surface-variant",
               isGold || (isDark && index === 0) ? "font-semibold" : "",
             ].join(" ")}
@@ -249,7 +249,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
 
       <button
         className={[
-          "w-full cursor-pointer rounded-xl px-5 py-3 text-sm leading-5 font-semibold transition-all active:scale-95",
+          "type-button w-full cursor-pointer rounded-xl px-5 py-3 transition-all active:scale-95",
           isGold
             ? "bg-[#ffc000] text-secondary-foreground shadow-lg shadow-[#ffc000]/20 hover:scale-[1.02]"
             : "",
@@ -269,10 +269,10 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="font-heading text-[2.5rem] leading-none font-semibold text-primary">
+      <p className="type-hero text-primary">
         {value}
       </p>
-      <p className="mt-1 text-xs leading-4 font-medium text-on-surface-variant uppercase">
+      <p className="type-caption mt-1 font-medium uppercase text-on-surface-variant">
         {label}
       </p>
     </div>

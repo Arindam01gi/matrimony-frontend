@@ -85,22 +85,22 @@ const recentlyViewed = [
 export function DiscoveryFeedPage() {
   return (
     <div className="min-h-screen bg-surface text-on-surface">
-      <main className="mx-auto grid min-h-screen max-w-[1440px] grid-cols-12 gap-8 px-5 pt-24 pb-32 md:px-10 lg:pb-12">
+      <main className="mx-auto grid min-h-screen w-full max-w-[1440px] grid-cols-12 gap-8 px-5 pt-24 pb-32 md:px-10 lg:pb-12">
         <FilterSidebar />
 
-        <section className="col-span-12 flex flex-col gap-8 lg:col-span-6">
+        <section className="col-span-12 flex min-w-0 flex-col gap-8 lg:col-span-6">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <h1 className="font-heading text-[32px] leading-10 font-semibold text-on-surface">
+              <h1 className="type-app-title text-on-surface">
                 Discover Matches
               </h1>
-              <p className="mt-1 text-base leading-6 text-on-surface-variant">
+              <p className="type-body mt-1 max-w-full text-on-surface-variant">
                 Curated profiles based on your cultural preferences
               </p>
             </div>
             <button
               type="button"
-              className="flex cursor-pointer items-center gap-2 self-start text-sm leading-5 font-semibold text-primary hover:underline sm:self-auto"
+              className="type-button flex cursor-pointer items-center gap-2 self-start text-primary hover:underline sm:self-auto"
             >
               <span>Sort by: Relevance</span>
               <ChevronDown className="size-4" />
@@ -116,7 +116,7 @@ export function DiscoveryFeedPage() {
           <div className="flex justify-center py-12">
             <div className="flex flex-col items-center gap-4">
               <div className="size-8 animate-spin rounded-full border-4 border-primary-container border-t-transparent" />
-              <p className="text-sm leading-5 font-semibold text-on-surface-variant">
+              <p className="type-label text-on-surface-variant">
                 Loading more profiles...
               </p>
             </div>
@@ -142,7 +142,7 @@ function FilterSidebar() {
     <aside className="col-span-3 hidden lg:block">
       <div className="sticky top-24 flex flex-col gap-8 rounded-xl border border-outline-variant/20 bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
         <div>
-          <h2 className="mb-4 font-heading text-2xl leading-8 font-semibold text-primary">
+          <h2 className="type-section-title mb-4 text-primary">
             Refine Search
           </h2>
           <div className="mb-8 h-1 w-12 rounded-full bg-secondary-container" />
@@ -150,14 +150,14 @@ function FilterSidebar() {
 
         <FilterBlock label="Age Range">
           <div className="mt-2 flex items-center gap-4">
-            <input className="w-full rounded-lg border-0 bg-surface-dim/30 p-3 text-base leading-6 focus:ring-2 focus:ring-primary-container" placeholder="24" type="number" />
+            <input className="type-body w-full rounded-lg border-0 bg-surface-dim/30 p-3 focus:ring-2 focus:ring-primary-container" placeholder="24" type="number" />
             <span className="text-on-surface-variant">to</span>
-            <input className="w-full rounded-lg border-0 bg-surface-dim/30 p-3 text-base leading-6 focus:ring-2 focus:ring-primary-container" placeholder="32" type="number" />
+            <input className="type-body w-full rounded-lg border-0 bg-surface-dim/30 p-3 focus:ring-2 focus:ring-primary-container" placeholder="32" type="number" />
           </div>
         </FilterBlock>
 
         <FilterBlock label="Location">
-          <select className="w-full cursor-pointer appearance-none rounded-lg border-0 bg-surface-dim/30 p-3 text-base leading-6 focus:ring-2 focus:ring-primary-container">
+          <select className="type-body w-full cursor-pointer appearance-none rounded-lg border-0 bg-surface-dim/30 p-3 focus:ring-2 focus:ring-primary-container">
             <option>West Bengal, India</option>
             <option>Dhaka, Bangladesh</option>
             <option>New York, USA</option>
@@ -172,7 +172,7 @@ function FilterSidebar() {
                 key={item}
                 type="button"
                 className={[
-                  "cursor-pointer rounded-full px-3 py-1 text-xs leading-4 font-medium transition-colors",
+                  "type-caption cursor-pointer rounded-full px-3 py-1 font-medium transition-colors",
                   index === 0
                     ? "bg-primary-container text-on-primary-container"
                     : "border border-outline-variant bg-white text-on-surface-variant hover:bg-surface-container",
@@ -185,7 +185,7 @@ function FilterSidebar() {
         </FilterBlock>
 
         <FilterBlock label="Occupation">
-          <select className="w-full cursor-pointer appearance-none rounded-lg border-0 bg-surface-dim/30 p-3 text-base leading-6 focus:ring-2 focus:ring-primary-container">
+          <select className="type-body w-full cursor-pointer appearance-none rounded-lg border-0 bg-surface-dim/30 p-3 focus:ring-2 focus:ring-primary-container">
             <option>Software Professional</option>
             <option>Medical Practitioner</option>
             <option>Civil Services</option>
@@ -195,7 +195,7 @@ function FilterSidebar() {
 
         <button
           type="button"
-          className="mt-8 w-full cursor-pointer rounded-xl bg-primary-container py-4 text-sm leading-5 font-semibold text-white shadow-md transition-all hover:scale-[1.02] hover:shadow-lg active:scale-95"
+          className="type-button mt-8 w-full cursor-pointer rounded-xl bg-primary-container py-4 text-white shadow-md transition-all hover:scale-[1.02] hover:shadow-lg active:scale-95"
         >
           Apply Filters
         </button>
@@ -213,7 +213,7 @@ function FilterBlock({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm leading-5 font-semibold tracking-wider text-on-surface uppercase">
+      <label className="type-eyebrow text-on-surface">
         {label}
       </label>
       {children}
@@ -225,7 +225,7 @@ function ProfileCard({ profile }: { profile: (typeof profiles)[number] }) {
   return (
     <Link
       href={PROFILE_DETAILS_PATH}
-      className="group relative overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl"
+      className="group relative block w-full min-w-0 overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-xl"
     >
       <div className="relative h-[320px] overflow-hidden">
         <Image
@@ -239,7 +239,7 @@ function ProfileCard({ profile }: { profile: (typeof profiles)[number] }) {
           <div className="absolute top-4 left-4">
             <span
               className={[
-                "flex items-center gap-1 rounded-full px-3 py-1 text-xs leading-4 font-bold backdrop-blur-sm",
+                "type-caption flex items-center gap-1 rounded-full px-3 py-1 font-bold backdrop-blur-sm",
                 profile.badgeStyle === "gold"
                   ? "bg-secondary-container/90 text-on-secondary-container"
                   : "bg-[#006f6e]/90 text-[#9befed]",
@@ -256,10 +256,10 @@ function ProfileCard({ profile }: { profile: (typeof profiles)[number] }) {
         ) : null}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         <div className="absolute right-6 bottom-4 left-6">
-          <h2 className="font-heading text-2xl leading-8 font-semibold text-white">
+          <h2 className="type-profile-name text-white">
             {profile.name}
           </h2>
-          <p className="text-xs leading-4 font-medium text-white/80">{profile.meta}</p>
+          <p className="type-caption font-medium text-white/80">{profile.meta}</p>
         </div>
       </div>
       <div className="flex flex-col gap-2 p-4">
@@ -267,16 +267,16 @@ function ProfileCard({ profile }: { profile: (typeof profiles)[number] }) {
           {profile.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-lg border border-outline-variant/20 bg-surface-container px-3 py-1 text-xs leading-4 text-on-surface-variant"
+              className="type-caption rounded-lg border border-outline-variant/20 bg-surface-container px-3 py-1 text-on-surface-variant"
             >
               {tag}
             </span>
           ))}
         </div>
-        <p className="mt-2 line-clamp-2 text-base leading-6 text-on-surface-variant">
+        <p className="type-body mt-2 line-clamp-2 text-on-surface-variant">
           {profile.summary}
         </p>
-        <span className="mt-4 w-full rounded-xl bg-primary-container py-3 text-center text-sm leading-5 font-semibold text-white transition-colors group-hover:bg-primary">
+        <span className="type-button mt-4 w-full rounded-xl bg-primary-container py-3 text-center text-white transition-colors group-hover:bg-primary">
           View Profile
         </span>
       </div>
@@ -289,7 +289,7 @@ function ActivitySidebar() {
     <aside className="col-span-3 hidden lg:block">
       <div className="sticky top-24 flex flex-col gap-8">
         <section className="rounded-xl border border-outline-variant/20 bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-          <h2 className="mb-4 flex items-center gap-2 font-heading text-2xl leading-8 font-semibold text-on-surface">
+          <h2 className="type-section-title mb-4 flex items-center gap-2 text-on-surface">
             <Bolt className="size-6 text-primary" />
             Quick Matches
           </h2>
@@ -310,10 +310,10 @@ function ActivitySidebar() {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm leading-5 font-semibold text-on-surface transition-colors group-hover:text-primary">
+                  <p className="type-label truncate text-on-surface transition-colors group-hover:text-primary">
                     {match.name}
                   </p>
-                  <p className="truncate text-xs leading-4 text-on-surface-variant">
+                  <p className="type-caption truncate text-on-surface-variant">
                     {match.meta}
                   </p>
                 </div>
@@ -322,14 +322,14 @@ function ActivitySidebar() {
           </div>
           <button
             type="button"
-            className="mt-4 w-full cursor-pointer py-2 text-sm leading-5 font-semibold text-primary hover:underline"
+            className="type-button mt-4 w-full cursor-pointer py-2 text-primary hover:underline"
           >
             View All Matches
           </button>
         </section>
 
         <section className="rounded-xl border border-outline-variant/20 bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
-          <h2 className="mb-4 font-heading text-2xl leading-8 font-semibold text-on-surface">
+          <h2 className="type-section-title mb-4 text-on-surface">
             Recently Viewed
           </h2>
           <div className="flex gap-2 overflow-x-auto pb-2">
@@ -353,15 +353,15 @@ function ActivitySidebar() {
 
         <section className="relative overflow-hidden rounded-xl bg-primary-container p-8 text-on-primary-container shadow-md">
           <div className="absolute top-0 right-0 -mt-12 -mr-12 size-24 rounded-full bg-white/10" />
-          <h2 className="mb-2 font-heading text-2xl leading-8 font-semibold">
+          <h2 className="type-section-title mb-2">
             Upgrade to Gold
           </h2>
-          <p className="mb-4 text-xs leading-4">
+          <p className="type-caption mb-4">
             See who liked you and get unlimited messaging.
           </p>
           <Link
             href="/premium"
-            className="inline-flex rounded-lg bg-white px-4 py-2 text-sm leading-5 font-semibold text-primary transition-colors hover:bg-surface-container-high"
+            className="type-button inline-flex rounded-lg bg-white px-4 py-2 text-primary transition-colors hover:bg-surface-container-high"
           >
             Learn More
           </Link>

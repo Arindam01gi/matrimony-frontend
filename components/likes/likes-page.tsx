@@ -83,14 +83,14 @@ export function LikesPage() {
         <section className="col-span-12 lg:col-span-8">
           <div className="mb-8 flex flex-col gap-4">
             <div>
-              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-surface-container-low px-3 py-1 text-xs leading-4 font-semibold text-primary">
+              <div className="type-caption mb-3 inline-flex items-center gap-2 rounded-full bg-surface-container-low px-3 py-1 font-semibold text-primary">
                 <Heart className="size-4 fill-current" />
                 <span>{interestedProfiles.length} new interests</span>
               </div>
-              <h1 className="font-heading text-[32px] leading-10 font-semibold text-on-surface">
+              <h1 className="type-app-title text-on-surface">
                 Interests Received
               </h1>
-              <p className="mt-2 max-w-2xl text-base leading-6 text-on-surface-variant">
+              <p className="type-body mt-2 max-w-2xl text-on-surface-variant">
                 Review members who have expressed interest and open their full
                 profile when you are ready to know more.
               </p>
@@ -98,7 +98,7 @@ export function LikesPage() {
 
             <Link
               href={DISCOVERY_PATH}
-              className="inline-flex w-fit items-center gap-2 text-sm leading-5 font-semibold text-primary transition-colors hover:text-primary-container"
+              className="type-button inline-flex w-fit items-center gap-2 text-primary transition-colors hover:text-primary-container"
             >
               <Compass className="size-4" />
               Discover more
@@ -124,10 +124,10 @@ export function LikesPage() {
                   <Sparkles className="size-5" />
                 </div>
                 <div>
-                  <h2 className="font-heading text-2xl leading-8 font-semibold">
+                  <h2 className="type-section-title">
                     Your activity
                   </h2>
-                  <p className="text-xs leading-4 text-on-surface-variant">
+                  <p className="type-caption text-on-surface-variant">
                     Last 7 days
                   </p>
                 </div>
@@ -138,10 +138,10 @@ export function LikesPage() {
                     key={label}
                     className="rounded-lg bg-surface-container-low p-4"
                   >
-                    <p className="font-heading text-2xl leading-8 font-semibold text-primary">
+                    <p className="type-stat text-primary">
                       {value}
                     </p>
-                    <p className="mt-1 text-xs leading-4 font-medium text-on-surface-variant">
+                    <p className="type-caption mt-1 font-medium text-on-surface-variant">
                       {label}
                     </p>
                   </div>
@@ -152,24 +152,24 @@ export function LikesPage() {
             <section className="rounded-xl border border-outline-variant/20 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
               <div className="mb-4 flex items-center gap-3 text-primary">
                 <ShieldCheck className="size-6" />
-                <h2 className="font-heading text-2xl leading-8 font-semibold text-on-surface">
+                <h2 className="type-section-title text-on-surface">
                   Stand out more
                 </h2>
               </div>
-              <p className="text-sm leading-5 text-on-surface-variant">
+              <p className="type-body-sm text-on-surface-variant">
                 Complete your profile details to help serious interests make a
                 confident first move.
               </p>
               <div className="mt-5 h-2 overflow-hidden rounded-full bg-surface-container-high">
                 <div className="h-full w-[78%] rounded-full bg-primary" />
               </div>
-              <div className="mt-3 flex items-center justify-between text-xs leading-4 font-semibold">
+              <div className="type-caption mt-3 flex items-center justify-between font-semibold">
                 <span className="text-on-surface-variant">Profile strength</span>
                 <span className="text-primary">78%</span>
               </div>
               <Link
                 href={MY_PROFILE_PATH}
-                className="mt-5 inline-flex w-full justify-center rounded-lg bg-primary px-4 py-3 text-sm leading-5 font-semibold text-white transition-colors hover:bg-primary-container active:scale-95"
+                className="type-button mt-5 inline-flex w-full justify-center rounded-lg bg-primary px-4 py-3 text-white transition-colors hover:bg-primary-container active:scale-95"
               >
                 Improve profile
               </Link>
@@ -207,7 +207,7 @@ function InterestCard({
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
             <span
               className={[
-                "inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs leading-4 font-bold backdrop-blur-sm",
+                "type-caption inline-flex items-center gap-1 rounded-full px-3 py-1 font-bold backdrop-blur-sm",
                 isGold
                   ? "bg-secondary-container/90 text-on-secondary-container"
                   : "bg-[#006f6e]/90 text-[#9befed]",
@@ -227,28 +227,28 @@ function InterestCard({
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
             <div className="min-w-0">
               <Link href={PROFILE_DETAILS_PATH} className="group/title">
-                <h2 className="font-heading text-2xl leading-8 font-semibold text-on-surface transition-colors group-hover/title:text-primary">
+                <h2 className="type-profile-name text-on-surface transition-colors group-hover/title:text-primary">
                   {profile.name}, {profile.age}
                 </h2>
               </Link>
-              <p className="mt-1 text-sm leading-5 font-semibold text-on-surface-variant">
+              <p className="type-label mt-1 text-on-surface-variant">
                 {profile.meta}
               </p>
-              <p className="mt-2 flex items-center gap-1 text-xs leading-4 text-on-surface-variant">
+              <p className="type-caption mt-2 flex items-center gap-1 text-on-surface-variant">
                 <MapPin className="size-3.5" />
                 <span>{profile.location}</span>
               </p>
             </div>
-            <div className="shrink-0 rounded-full bg-surface-container-low px-3 py-1 text-xs leading-4 font-bold text-primary">
+            <div className="type-caption shrink-0 rounded-full bg-surface-container-low px-3 py-1 font-bold text-primary">
               {profile.match}
             </div>
           </div>
 
           <div className="mt-4 rounded-lg bg-surface-container-low p-4">
-            <p className="text-sm leading-5 text-on-surface-variant">
+            <p className="type-body-sm text-on-surface-variant">
               &quot;{profile.preview}&quot;
             </p>
-            <p className="mt-2 text-xs leading-4 font-semibold text-primary">
+            <p className="type-caption mt-2 font-semibold text-primary">
               Sent interest {profile.receivedAt}
             </p>
           </div>
@@ -257,7 +257,7 @@ function InterestCard({
             {profile.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-lg border border-outline-variant/20 bg-white px-3 py-1 text-xs leading-4 text-on-surface-variant"
+                className="type-caption rounded-lg border border-outline-variant/20 bg-white px-3 py-1 text-on-surface-variant"
               >
                 {tag}
               </span>
@@ -267,14 +267,14 @@ function InterestCard({
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
             <Link
               href={PROFILE_DETAILS_PATH}
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm leading-5 font-semibold text-white transition-colors hover:bg-primary-container active:scale-95"
+              className="type-button inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-white transition-colors hover:bg-primary-container active:scale-95"
             >
               <User className="size-4" />
               <span>View Profile</span>
             </Link>
             <button
               type="button"
-              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-surface-container-high px-4 py-3 text-sm leading-5 font-semibold text-primary transition-colors hover:bg-surface-container-highest active:scale-95"
+              className="type-button inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-surface-container-high px-4 py-3 text-primary transition-colors hover:bg-surface-container-highest active:scale-95"
             >
               <Check className="size-4" />
               <span>Accept</span>
@@ -299,10 +299,10 @@ function EmptyState() {
       <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-surface-container-high text-primary">
         <Heart className="size-7" />
       </div>
-      <h2 className="mt-4 font-heading text-2xl leading-8 font-semibold">
+      <h2 className="type-section-title mt-4">
         No interests yet
       </h2>
-      <p className="mx-auto mt-2 max-w-md text-base leading-6 text-on-surface-variant">
+      <p className="type-body mx-auto mt-2 max-w-md text-on-surface-variant">
         New interests will appear here as soon as members respond to your
         profile.
       </p>

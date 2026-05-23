@@ -58,10 +58,10 @@ export function PartnerPreferencePage() {
     <div className="relative min-h-screen overflow-hidden bg-surface text-on-surface">
       <main className="mx-auto max-w-[1000px] px-5 pt-24 pb-12 md:px-0">
         <section className="mb-8 px-0 text-center md:px-10 md:text-left">
-          <h1 className="mb-2 font-heading text-[40px] leading-[48px] font-bold text-primary">
+          <h1 className="type-hero mb-2 text-primary">
             Partner Preferences
           </h1>
-          <p className="text-lg leading-7 text-on-surface-variant">
+          <p className="type-body-lg text-on-surface-variant">
             Help us find the perfect match for your journey ahead.
           </p>
         </section>
@@ -134,10 +134,10 @@ export function PartnerPreferencePage() {
                       <div className="flex min-w-0 items-center gap-3">
                         <Icon className="size-6 shrink-0 text-secondary-foreground" />
                         <div className="min-w-0">
-                          <p className="text-sm leading-5 font-semibold text-on-surface">
+                          <p className="type-label text-on-surface">
                             {choice.title}
                           </p>
-                          <p className="text-xs leading-4 text-on-surface-variant">
+                          <p className="type-caption text-on-surface-variant">
                             {choice.description}
                           </p>
                         </div>
@@ -163,7 +163,7 @@ export function PartnerPreferencePage() {
         <div className="mt-8 flex justify-end md:px-10">
           <button
             type="button"
-            className="cursor-pointer rounded-full bg-primary-container px-12 py-4 text-sm leading-5 font-semibold text-on-primary-container shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
+            className="type-button cursor-pointer rounded-full bg-primary-container px-12 py-4 text-on-primary-container shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
           >
             Save &amp; Continue
           </button>
@@ -193,7 +193,7 @@ function RangePreferenceCard({
     <PreferenceCard>
       <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
         <PreferenceLabel className="mb-0">{label}</PreferenceLabel>
-        <span className="font-heading text-2xl leading-8 font-bold text-primary">
+        <span className="type-stat font-bold text-primary">
           {value}
         </span>
       </div>
@@ -230,7 +230,7 @@ function PreferenceLabel({
   return (
     <p
       className={[
-        "block text-sm leading-5 font-semibold tracking-wider text-on-surface-variant uppercase",
+        "type-eyebrow block text-on-surface-variant",
         className,
       ].join(" ")}
     >
@@ -255,7 +255,7 @@ function Chip({
       type="button"
       onClick={onClick}
       className={[
-        "cursor-pointer border px-5 py-2 text-base leading-6 transition-all",
+        "type-body cursor-pointer border px-5 py-2 transition-all",
         rounded === "full" ? "rounded-full" : "rounded-xl",
         active
           ? "border-primary bg-primary text-white"

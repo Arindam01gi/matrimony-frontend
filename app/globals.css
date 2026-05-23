@@ -181,13 +181,71 @@
   html {
     @apply font-sans;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-playfair-display);
+}
+
+@layer utilities {
+  .type-brand {
+    @apply font-heading text-2xl leading-8 font-semibold italic md:text-[28px] md:leading-9;
+  }
+
+  .type-hero {
+    @apply font-heading text-[34px] leading-[38px] font-bold md:text-[40px] md:leading-[48px];
+  }
+
+  .type-page-title {
+    @apply font-heading text-[28px] leading-[34px] font-semibold md:text-[32px] md:leading-10;
+  }
+
+  .type-app-title {
+    @apply font-sans text-[28px] leading-9 font-semibold;
+  }
+
+  .type-section-title {
+    @apply font-sans text-xl leading-7 font-semibold;
+  }
+
+  .type-card-title {
+    @apply font-sans text-base leading-6 font-semibold;
+  }
+
+  .type-profile-name {
+    @apply font-heading text-2xl leading-8 font-semibold;
+  }
+
+  .type-stat {
+    @apply font-heading text-2xl leading-8 font-semibold;
+  }
+
+  .type-body-lg {
+    @apply text-lg leading-7;
+  }
+
+  .type-body {
+    @apply text-base leading-6;
+  }
+
+  .type-body-sm {
+    @apply text-sm leading-5;
+  }
+
+  .type-caption {
+    @apply text-xs leading-4;
+  }
+
+  .type-micro {
+    @apply text-[11px] leading-4 font-semibold;
+  }
+
+  .type-label {
+    @apply text-sm leading-5 font-semibold;
+  }
+
+  .type-eyebrow {
+    @apply text-xs leading-4 font-semibold tracking-[0.08em] uppercase;
+  }
+
+  .type-button {
+    @apply text-sm leading-5 font-semibold;
   }
 }
 

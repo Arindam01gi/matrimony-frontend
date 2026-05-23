@@ -18,30 +18,31 @@ function FeatureIcon({ icon }: { icon: "user-plus" | "shield-check" | "heart" })
 
 export function HowItWorksSection() {
   return (
-    <section className="mt-8 bg-surface py-8" id="discovery">
+    <section className="bg-surface py-14 md:py-16" id="discovery">
       <div className="mx-auto max-w-300 px-5 md:px-10">
-        <div className="mb-8 text-center">
-          <h2 className="text-[28px] leading-8.5 font-semibold text-foreground md:text-[32px] md:leading-[40px]">
-            A Sophisticated Path to Connection
+        <div className="mx-auto mb-10 max-w-[320px] text-center sm:max-w-2xl">
+          <h2 className="type-page-title text-foreground">
+            A Sophisticated Path <br className="sm:hidden" />
+            to Connection
           </h2>
-          <p className="mt-2 text-base text-on-surface-variant">
+          <p className="type-body mt-2 text-on-surface-variant">
             Simple, secure, and respectful steps to meet your perfect match.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {featureSteps.map((step) => (
             <article
               key={step.title}
-              className="group flex flex-col items-center rounded-xl p-8 text-center transition-all duration-300 hover:bg-white hover:shadow-xl"
+              className="group flex flex-col items-center rounded-2xl border border-outline-variant/35 bg-white/55 p-7 text-center shadow-[0_10px_28px_rgba(56,46,46,0.04)] transition-all duration-300 hover:border-primary/18 hover:bg-white"
             >
-              <div className="mb-4 flex size-20 items-center justify-center rounded-full bg-primary/5 text-foreground transition-colors group-hover:bg-primary-container group-hover:text-on-primary-container">
+              <div className="mb-5 flex size-18 items-center justify-center rounded-full bg-primary/7 text-primary transition-colors group-hover:bg-primary-container group-hover:text-white">
                 <FeatureIcon icon={step.icon} />
               </div>
-              <h3 className="mb-2 text-[24px] leading-8 font-semibold text-foreground">
+              <h3 className="type-section-title mb-2 text-foreground">
                 {step.title}
               </h3>
-              <p className="max-w-sm text-base leading-6 text-on-surface-variant">
+              <p className="type-body max-w-sm text-on-surface-variant">
                 {step.description}
               </p>
             </article>

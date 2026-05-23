@@ -16,10 +16,10 @@ export function AuthVisualPanel() {
       />
 
       <div className="absolute top-12 left-12 z-10 max-w-sm rounded-xl bg-inverse-surface/55 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
-        <h1 className="font-heading text-2xl leading-8 font-semibold tracking-tight text-primary-fixed-dim italic">
+        <h1 className="type-brand text-primary-fixed-dim">
           {authCopy.brand}
         </h1>
-        <p className="mt-2 text-base leading-6 text-surface-bright/90">
+        <p className="type-body mt-2 text-surface-bright/90">
           {authCopy.visualDescription}
         </p>
       </div>

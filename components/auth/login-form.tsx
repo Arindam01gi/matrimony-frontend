@@ -24,7 +24,7 @@ export function LoginForm() {
       <form className="space-y-4" onSubmit={handleSubmit}>
         <FormField htmlFor="identifier" label="Email or Phone Number">
           <Input
-            className="h-14 rounded-xl border-none bg-surface-variant/30 px-4 text-base text-on-surface shadow-none placeholder:text-on-surface-variant/70 focus-visible:ring-2 focus-visible:ring-primary"
+            className="type-body h-14 rounded-xl border-none bg-surface-variant/30 px-4 text-on-surface shadow-none placeholder:text-on-surface-variant/70 focus-visible:ring-2 focus-visible:ring-primary"
             id="identifier"
             name="identifier"
             placeholder="e.g. ananya.das@email.com"
@@ -35,13 +35,13 @@ export function LoginForm() {
         <div className="space-y-2">
           <div className="flex items-center justify-between gap-4">
             <label
-              className="ml-1 text-sm leading-5 font-semibold tracking-[0.01em] text-on-surface-variant"
+              className="type-label ml-1 text-on-surface-variant"
               htmlFor="password"
             >
               Password
             </label>
             <a
-              className="text-xs leading-4 font-medium text-primary transition-colors hover:text-primary-container hover:underline"
+              className="type-caption font-medium text-primary transition-colors hover:text-primary-container hover:underline"
               href="#"
             >
               Forgot Password?
@@ -49,7 +49,7 @@ export function LoginForm() {
           </div>
           <div className="relative">
             <Input
-              className="h-14 rounded-xl border-none bg-surface-variant/30 px-4 pr-12 text-base text-on-surface shadow-none placeholder:text-on-surface-variant/70 focus-visible:ring-2 focus-visible:ring-primary"
+              className="type-body h-14 rounded-xl border-none bg-surface-variant/30 px-4 pr-12 text-on-surface shadow-none placeholder:text-on-surface-variant/70 focus-visible:ring-2 focus-visible:ring-primary"
               id="password"
               name="password"
               placeholder="********"
@@ -66,7 +66,7 @@ export function LoginForm() {
           </div>
         </div>
 
-        <label className="ml-1 flex cursor-pointer items-center gap-3 py-2 text-base text-on-surface-variant select-none">
+        <label className="type-body ml-1 flex cursor-pointer items-center gap-3 py-2 text-on-surface-variant select-none">
           <input
             className="size-5 cursor-pointer appearance-none rounded border border-outline-variant bg-transparent text-primary transition-colors checked:border-primary checked:bg-primary focus:ring-2 focus:ring-primary"
             id="remember"
@@ -76,7 +76,7 @@ export function LoginForm() {
         </label>
 
         <Button
-          className="h-14 w-full rounded-xl bg-primary-container text-sm font-semibold text-on-primary shadow-lg shadow-primary/10 transition-all hover:scale-[1.01] hover:bg-primary-container hover:shadow-primary/20 active:scale-[0.98]"
+          className="h-14 w-full rounded-xl bg-primary-container text-on-primary shadow-lg shadow-primary/10 transition-all hover:scale-[1.01] hover:bg-primary-container hover:shadow-primary/20 active:scale-[0.98]"
           type="submit"
         >
           Login to Profile
@@ -85,7 +85,7 @@ export function LoginForm() {
 
       <div className="relative flex items-center py-4">
         <div className="grow border-t border-outline-variant/40" />
-        <span className="mx-4 shrink text-xs leading-4 font-medium tracking-[0.16em] text-on-surface-variant/60 uppercase">
+        <span className="type-eyebrow mx-4 shrink font-medium text-on-surface-variant/60">
           or continue with
         </span>
         <div className="grow border-t border-outline-variant/40" />
@@ -114,7 +114,7 @@ export function LoginForm() {
               fill="#EA4335"
             />
           </svg>
-          <span className="text-sm leading-5 font-semibold">Google</span>
+          <span className="type-button">Google</span>
         </button>
         <button
           className="flex h-14 cursor-pointer items-center justify-center rounded-xl border border-outline-variant/30 bg-white text-on-surface transition-colors hover:bg-surface-variant/20"
@@ -142,12 +142,12 @@ export function LoginForm() {
               strokeWidth="1.8"
             />
           </svg>
-          <span className="text-sm leading-5 font-semibold">Facebook</span>
+          <span className="type-button">Facebook</span>
         </button>
       </div>
 
       <footer className="pt-4 text-center">
-        <p className="text-base leading-6 text-on-surface-variant">
+        <p className="type-body text-on-surface-variant">
           Don&apos;t have an account?
           <Link
             className="ml-2 cursor-pointer font-semibold text-primary transition-colors hover:text-primary-container hover:underline"

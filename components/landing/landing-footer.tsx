@@ -21,10 +21,10 @@ export function LandingFooter() {
       <div className="mx-auto max-w-[1200px] px-5 md:px-10">
         <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4">
           <div>
-            <h2 className="mb-4 text-[1.75rem] leading-tight font-semibold italic text-primary-fixed-dim">
+            <h2 className="type-brand mb-4 text-primary-fixed-dim">
               Shubho Shomproti
             </h2>
-            <p className="max-w-[16rem] text-base leading-7 text-surface-dim/70">
+            <p className="type-body max-w-[16rem] text-surface-dim/70">
               Redefining matrimonial excellence for the global Bengali community since
               2021.
             </p>
@@ -32,10 +32,10 @@ export function LandingFooter() {
 
           {footerLinkGroups.map((group) => (
             <div key={group.title}>
-              <h3 className="mb-4 text-sm font-semibold text-surface-bright">
+              <h3 className="type-label mb-4 text-surface-bright">
                 {group.title}
               </h3>
-              <ul className="space-y-3 text-base text-surface-dim/70">
+              <ul className="type-body space-y-3 text-surface-dim/70">
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <Link
@@ -51,7 +51,7 @@ export function LandingFooter() {
           ))}
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-surface-bright">
+            <h3 className="type-label mb-4 text-surface-bright">
               Connect With Us
             </h3>
             <div className="flex gap-4">
@@ -69,7 +69,7 @@ export function LandingFooter() {
           </div>
         </div>
 
-        <div className="border-t border-surface-variant/20 pt-8 text-center text-xs font-medium text-surface-dim/50">
+        <div className="type-caption border-t border-surface-variant/20 pt-8 text-center font-medium text-surface-dim/50">
           &copy; 2024 Shubho Shomproti Private Limited. All Rights Reserved. Crafted with
           love in Kolkata.
         </div>

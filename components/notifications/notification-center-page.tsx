@@ -75,14 +75,14 @@ export function NotificationCenterPage() {
       <main className="mx-auto min-h-screen max-w-[1200px] px-5 pt-24 pb-28 md:px-10 lg:pb-16">
         <section className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-surface-container-low px-3 py-1 text-xs leading-4 font-semibold text-primary">
+            <div className="type-caption mb-3 inline-flex items-center gap-2 rounded-full bg-surface-container-low px-3 py-1 font-semibold text-primary">
               <BellRing className="size-4" />
               <span>Activity Center</span>
             </div>
-            <h1 className="font-heading text-[32px] leading-10 font-semibold text-on-surface">
+            <h1 className="type-app-title text-on-surface">
               Notifications
             </h1>
-            <p className="mt-2 max-w-2xl text-base leading-6 text-on-surface-variant">
+            <p className="type-body mt-2 max-w-2xl text-on-surface-variant">
               Keep track of interests, messages, profile views, and account updates
               tailored for your matrimony journey.
             </p>
@@ -91,14 +91,14 @@ export function NotificationCenterPage() {
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-outline-variant/30 bg-white px-4 py-2 text-sm leading-5 font-semibold text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95"
+              className="type-button inline-flex cursor-pointer items-center gap-2 rounded-xl border border-outline-variant/30 bg-white px-4 py-2 text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95"
             >
               <CheckCheck className="size-4" />
               <span>Mark all as read</span>
             </button>
             <button
               type="button"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-outline-variant/30 bg-white px-4 py-2 text-sm leading-5 font-semibold text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95"
+              className="type-button inline-flex cursor-pointer items-center gap-2 rounded-xl border border-outline-variant/30 bg-white px-4 py-2 text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95"
             >
               <Settings className="size-4" />
               <span>Preferences</span>
@@ -132,7 +132,7 @@ export function NotificationCenterPage() {
           <div className="mt-8 flex justify-center">
             <button
               type="button"
-              className="cursor-pointer text-sm leading-5 font-semibold text-on-surface-variant transition-colors hover:text-primary"
+              className="type-button cursor-pointer text-on-surface-variant transition-colors hover:text-primary"
             >
               View more activity
             </button>
@@ -153,7 +153,7 @@ function SectionTitle({
   return (
     <h2
       className={[
-        "mb-4 flex items-center gap-2 text-sm leading-5 font-semibold tracking-wider uppercase",
+        "type-eyebrow mb-4 flex items-center gap-2",
         active ? "text-primary" : "text-on-surface-variant",
       ].join(" ")}
     >
@@ -194,16 +194,16 @@ function RecentNotificationCard({
         <div className="min-w-0 flex-1">
           <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-start">
             <div className="min-w-0">
-              <p className="text-base leading-6 text-on-surface">
+              <p className="type-body text-on-surface">
                 <span className="font-bold">{notification.name}</span>{" "}
                 {notification.title}
               </p>
               {"preview" in notification && notification.preview ? (
-                <p className="mt-1 line-clamp-1 text-base leading-6 text-on-surface-variant italic">
+                <p className="type-body mt-1 line-clamp-1 text-on-surface-variant italic">
                   &quot;{notification.preview}&quot;
                 </p>
               ) : null}
-              <p className="mt-1 text-xs leading-4 font-medium text-on-surface-variant">
+              <p className="type-caption mt-1 font-medium text-on-surface-variant">
                 {notification.meta}
               </p>
             </div>
@@ -214,7 +214,7 @@ function RecentNotificationCard({
                   <Link
                     key={action}
                     href={PROFILE_DETAILS_PATH}
-                    className="inline-flex rounded-lg bg-surface-container-high px-4 py-2 text-sm leading-5 font-semibold text-on-surface-variant transition-colors hover:bg-surface-variant active:scale-95"
+                    className="type-button inline-flex rounded-lg bg-surface-container-high px-4 py-2 text-on-surface-variant transition-colors hover:bg-surface-variant active:scale-95"
                   >
                     {action}
                   </Link>
@@ -223,7 +223,7 @@ function RecentNotificationCard({
                     key={action}
                     type="button"
                     className={[
-                      "cursor-pointer rounded-lg px-4 py-2 text-sm leading-5 font-semibold transition-all active:scale-95",
+                      "type-button cursor-pointer rounded-lg px-4 py-2 transition-all active:scale-95",
                       index === 0
                         ? "bg-primary-container text-on-primary-container hover:bg-primary"
                         : "bg-surface-container-high text-on-surface-variant hover:bg-surface-variant",
@@ -241,7 +241,7 @@ function RecentNotificationCard({
               {notification.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-lg border border-outline-variant/20 bg-surface-container-low px-3 py-1 text-xs leading-4 text-on-surface-variant"
+                  className="type-caption rounded-lg border border-outline-variant/20 bg-surface-container-low px-3 py-1 text-on-surface-variant"
                 >
                   {tag}
                 </span>
@@ -273,17 +273,17 @@ function OlderNotificationRow({
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="text-base leading-6 text-on-surface">
+        <p className="type-body text-on-surface">
           <span className="font-bold">{notification.title}</span>{" "}
           {notification.text}
         </p>
-        <p className="text-xs leading-4 font-medium text-on-surface-variant">
+        <p className="type-caption font-medium text-on-surface-variant">
           {notification.meta}
         </p>
       </div>
 
       {"badge" in notification && notification.badge ? (
-        <span className="self-start rounded-full bg-secondary-container/20 px-3 py-1 text-xs leading-4 font-bold text-secondary-foreground sm:self-auto">
+        <span className="type-caption self-start rounded-full bg-secondary-container/20 px-3 py-1 font-bold text-secondary-foreground sm:self-auto">
           {notification.badge}
         </span>
       ) : null}
@@ -291,7 +291,7 @@ function OlderNotificationRow({
       {"cta" in notification && notification.cta ? (
         <Link
           href={notification.cta === "Discover now" ? DISCOVERY_PATH : PROFILE_DETAILS_PATH}
-          className="self-start text-sm leading-5 font-semibold text-primary hover:underline sm:self-auto"
+          className="type-button self-start text-primary hover:underline sm:self-auto"
         >
           {notification.cta}
         </Link>

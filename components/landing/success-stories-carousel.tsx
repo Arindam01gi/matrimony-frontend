@@ -26,11 +26,11 @@ export function SuccessStoriesCarousel() {
   return (
     <div>
       <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h2 className="text-[28px] leading-[34px] font-semibold text-foreground md:text-[32px] md:leading-[40px]">
+        <div className="max-w-[350px] sm:max-w-2xl">
+          <h2 className="type-page-title text-foreground">
             Eternal Connections
           </h2>
-          <p className="mt-2 text-base text-on-surface-variant">
+          <p className="type-body mt-2 text-on-surface-variant">
             Real stories from couples who found their forever through Shubho
             Shomproti.
           </p>
@@ -39,7 +39,7 @@ export function SuccessStoriesCarousel() {
         <div className="flex justify-start gap-4 md:justify-end">
           <Button
             aria-label="Show previous success stories"
-            className="size-12 rounded-full border border-outline bg-transparent text-foreground hover:bg-primary hover:text-white"
+            className="size-12 rounded-full border border-outline-variant bg-white/70 text-foreground shadow-sm hover:bg-primary hover:text-white"
             onClick={() => scrollCarousel("previous")}
             size="icon"
             variant="ghost"
@@ -48,7 +48,7 @@ export function SuccessStoriesCarousel() {
           </Button>
           <Button
             aria-label="Show next success stories"
-            className="size-12 rounded-full border border-outline bg-transparent text-foreground hover:bg-primary hover:text-white"
+            className="size-12 rounded-full border border-outline-variant bg-white/70 text-foreground shadow-sm hover:bg-primary hover:text-white"
             onClick={() => scrollCarousel("next")}
             size="icon"
             variant="ghost"
@@ -59,7 +59,7 @@ export function SuccessStoriesCarousel() {
       </div>
 
       <div
-        className="flex snap-x gap-8 overflow-x-auto pb-8 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x gap-6 overflow-x-auto pb-8 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         ref={carouselRef}
       >
         {successStories.map((story) => (

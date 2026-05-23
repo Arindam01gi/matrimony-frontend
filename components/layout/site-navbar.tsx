@@ -33,15 +33,15 @@ const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: DISCOVERY_PATH, label: "Discovery", icon: Compass },
   { href: PREMIUM_PATH, label: "Premium", icon: Crown },
-  { href: LIKES_PATH, label: "Likes", icon: Heart, hasDot: true },
-  { href: CHAT_PATH, label: "Chat", icon: MessageCircle, hasDot: true },
+  { href: LIKES_PATH, label: "Likes", icon: Heart },
+  { href: CHAT_PATH, label: "Chat", icon: MessageCircle },
 ] as const;
 
 const appBottomNavItems = [
   { href: DISCOVERY_PATH, label: "Discovery", icon: Compass },
   { href: PREMIUM_PATH, label: "Premium", icon: Crown },
-  { href: LIKES_PATH, label: "Likes", icon: Heart, hasDot: true },
-  { href: CHAT_PATH, label: "Chat", icon: MessageCircle, hasDot: true },
+  { href: LIKES_PATH, label: "Likes", icon: Heart },
+  { href: CHAT_PATH, label: "Chat", icon: MessageCircle },
   { href: MY_PROFILE_PATH, label: "Profile", icon: User },
 ] as const;
 
@@ -101,7 +101,7 @@ export function SiteNavbar() {
           : "border-outline-variant/20 shadow-[0_1px_0_rgba(144,111,112,0.12)]",
       )}
     >
-      <div className="grid h-16 w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 px-3 md:px-10">
+      <div className="grid h-16 w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 md:px-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
         <div className="flex min-w-0 items-center gap-3">
           <button
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -118,7 +118,7 @@ export function SiteNavbar() {
           </button>
 
           <Link
-            className="min-w-0 truncate font-heading text-2xl leading-8 font-semibold italic text-primary transition-colors hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 md:text-[28px] md:leading-9"
+            className="type-brand min-w-0 truncate text-primary transition-colors hover:text-primary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35"
             href="/"
           >
             Shubho Shomproti
@@ -135,13 +135,13 @@ export function SiteNavbar() {
           {isLanding ? (
             <div className="hidden items-center gap-3 sm:flex">
               <Link
-                className="inline-flex min-h-11 cursor-pointer items-center rounded-full border border-primary/70 px-5 text-sm leading-5 font-semibold text-primary transition-all hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
+                className="type-button inline-flex min-h-11 cursor-pointer items-center rounded-full border border-primary/70 px-5 text-primary transition-all hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
                 href={AUTH_LOGIN_PATH}
               >
                 Login
               </Link>
               <Link
-                className="inline-flex min-h-11 cursor-pointer items-center rounded-full bg-primary-container px-5 text-sm leading-5 font-semibold text-white shadow-[0_8px_20px_rgba(154,0,41,0.14)] transition-all hover:bg-primary hover:shadow-[0_10px_26px_rgba(154,0,41,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
+                className="type-button inline-flex min-h-11 cursor-pointer items-center rounded-full bg-primary-container px-5 text-white shadow-[0_8px_20px_rgba(154,0,41,0.14)] transition-all hover:bg-primary hover:shadow-[0_10px_26px_rgba(154,0,41,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
                 href={AUTH_REGISTER_PATH}
               >
                 Register Free
@@ -162,7 +162,6 @@ export function SiteNavbar() {
                 href={NOTIFICATIONS_PATH}
               >
                 <Bell className="size-6 stroke-[2.1]" />
-                <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-primary" />
               </Link>
 
               <Link
@@ -215,7 +214,7 @@ function PrimaryNavItem({
     return (
       <button
         aria-disabled="true"
-        className="relative inline-flex min-h-11 cursor-not-allowed items-center gap-2 rounded-full px-4 text-sm leading-5 font-semibold text-on-surface-variant/50"
+        className="type-button relative inline-flex min-h-11 cursor-not-allowed items-center gap-2 rounded-full px-4 text-on-surface-variant/50"
         title="Chat is coming soon"
         type="button"
       >
@@ -232,9 +231,9 @@ function PrimaryNavItem({
     <Link
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "relative inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm leading-5 font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95",
+        "type-button relative inline-flex min-h-11 items-center gap-2 rounded-full px-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95",
         isActive
-          ? "bg-surface-container-low text-primary shadow-[inset_0_0_0_1px_rgba(154,0,41,0.08)]"
+          ? "text-primary"
           : "text-on-surface-variant hover:bg-surface-container-low hover:text-primary",
       )}
       href={item.href}
@@ -242,13 +241,10 @@ function PrimaryNavItem({
       <Icon
         className={cn(
           "size-5 stroke-[2.2]",
-          isActive && item.label !== "Home" ? "fill-current" : "",
+          isActive && item.label !== "Home" && item.label !== "Chat" ? "fill-current" : "",
         )}
       />
       <span>{item.label}</span>
-      {"hasDot" in item && item.hasDot ? (
-        <span className="absolute right-2 top-2 size-1.5 rounded-full bg-primary" />
-      ) : null}
     </Link>
   );
 }
@@ -278,14 +274,14 @@ function CompactMenu({
       {isLanding ? (
         <div className="grid grid-cols-2 gap-3 border-t border-outline-variant/20 pt-4 sm:hidden">
           <Link
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-primary/70 px-4 text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
+            className="type-button inline-flex min-h-11 items-center justify-center rounded-full border border-primary/70 px-4 text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
             href={AUTH_LOGIN_PATH}
             onClick={onNavigate}
           >
             Login
           </Link>
           <Link
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary-container px-4 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
+            className="type-button inline-flex min-h-11 items-center justify-center rounded-full bg-primary-container px-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
             href={AUTH_REGISTER_PATH}
             onClick={onNavigate}
           >
@@ -313,13 +309,13 @@ function CompactNavItem({
     return (
       <button
         aria-disabled="true"
-        className="flex min-h-11 cursor-not-allowed items-center gap-3 rounded-xl px-3 text-sm font-semibold text-on-surface-variant/50"
+        className="type-button flex min-h-11 cursor-not-allowed items-center gap-3 rounded-xl px-3 text-on-surface-variant/50"
         title="Chat is coming soon"
         type="button"
       >
         <Icon className="size-5" />
         <span>{item.label}</span>
-        <span className="ml-auto rounded-full bg-surface-container-high px-2 py-0.5 text-[11px] leading-4">
+        <span className="type-micro ml-auto rounded-full bg-surface-container-high px-2 py-0.5">
           Soon
         </span>
       </button>
@@ -330,15 +326,20 @@ function CompactNavItem({
     <Link
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-[0.99]",
+        "type-button flex min-h-11 items-center gap-3 rounded-xl px-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-[0.99]",
         isActive
-          ? "bg-surface-container-low text-primary"
+          ? "text-primary"
           : "text-on-surface-variant hover:bg-surface-container-low hover:text-primary",
       )}
       href={item.href}
       onClick={onNavigate}
     >
-      <Icon className={cn("size-5", isActive && item.label !== "Home" ? "fill-current" : "")} />
+      <Icon
+        className={cn(
+          "size-5",
+          isActive && item.label !== "Home" && item.label !== "Chat" ? "fill-current" : "",
+        )}
+      />
       <span>{item.label}</span>
     </Link>
   );
@@ -382,7 +383,7 @@ function BottomNavItem({
         type="button"
       >
         <Icon className="size-5" />
-        <span className="max-w-full truncate text-[11px] leading-4 font-semibold">
+        <span className="type-micro max-w-full truncate">
           {item.label}
         </span>
         {"hasDot" in item && item.hasDot ? (
@@ -398,18 +399,20 @@ function BottomNavItem({
       className={cn(
         "relative flex min-h-14 flex-col items-center justify-center gap-1 rounded-xl px-1 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95",
         isActive
-          ? "bg-surface-container-low text-primary"
+          ? "text-primary"
           : "text-on-surface-variant hover:bg-surface-container-low hover:text-primary",
       )}
       href={item.href}
     >
-      <Icon className={cn("size-5", isActive && item.label !== "Profile" ? "fill-current" : "")} />
-      <span className="max-w-full truncate text-[11px] leading-4 font-semibold">
+      <Icon
+        className={cn(
+          "size-5",
+          isActive && item.label !== "Chat" && item.label !== "Profile" ? "fill-current" : "",
+        )}
+      />
+      <span className="type-micro max-w-full truncate">
         {item.label}
       </span>
-      {"hasDot" in item && item.hasDot ? (
-        <span className="absolute right-4 top-2 size-1.5 rounded-full bg-primary" />
-      ) : null}
     </Link>
   );
 }

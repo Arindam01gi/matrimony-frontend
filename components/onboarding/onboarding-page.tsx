@@ -328,13 +328,13 @@ export function OnboardingPage({ initialStep }: OnboardingPageProps) {
           >
             <Menu className="size-7 stroke-[2.5]" />
           </button>
-          <span className="truncate font-heading text-2xl leading-8 font-semibold italic text-primary">
+          <span className="type-brand truncate text-primary">
             Shubho Shomproti
           </span>
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="hidden text-sm leading-5 font-semibold text-on-surface-variant sm:inline">
+          <span className="type-label hidden text-on-surface-variant sm:inline">
             Step {stepIndex + 1} of {steps.length}
           </span>
           <div className="relative size-10 overflow-hidden rounded-full border border-outline-variant/30 bg-surface-container-high">
@@ -353,11 +353,11 @@ export function OnboardingPage({ initialStep }: OnboardingPageProps) {
       <main className="px-5 pt-24 pb-24 md:px-0 md:pb-20">
         <div className="mx-auto grid max-w-[1200px] items-stretch gap-8 md:h-[calc(100vh-8rem)] md:min-h-[800px] md:max-h-[900px] md:grid-cols-12 md:gap-4">
           <aside className="hidden md:col-span-5 md:flex md:h-full md:flex-col md:pr-12">
-            <h1 className="mb-4 font-heading text-[40px] leading-[48px] font-bold text-on-surface">
+            <h1 className="type-hero mb-4 text-on-surface">
               Start your <span className="text-primary italic">journey</span> to
               forever.
             </h1>
-            <p className="mb-8 text-lg leading-7 text-on-surface-variant">
+            <p className="type-body-lg mb-8 text-on-surface-variant">
               Personalize your experience so we can help you find compatible
               matches within a premium Bengali community.
             </p>
@@ -371,7 +371,7 @@ export function OnboardingPage({ initialStep }: OnboardingPageProps) {
                 className="object-cover"
               />
               <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/65 to-transparent p-8">
-                <p className="font-heading text-2xl leading-8 text-white italic">
+                <p className="type-profile-name text-white italic">
                   &quot;Connecting souls, celebrating heritage.&quot;
                 </p>
               </div>
@@ -380,7 +380,7 @@ export function OnboardingPage({ initialStep }: OnboardingPageProps) {
 
           <section className="flex min-h-[840px] flex-col rounded-xl border border-outline-variant/10 bg-white p-6 shadow-[0_20px_40px_rgba(0,0,0,0.04)] md:col-span-7 md:h-full md:min-h-0 md:p-12">
             <div className="mb-8 shrink-0">
-              <div className="mb-4 flex justify-between gap-3 text-sm leading-5 font-semibold">
+              <div className="type-label mb-4 flex justify-between gap-3">
                 {steps.map((item) => {
                   const itemIndex = stepKeys.indexOf(item.key);
                   const isActive = item.key === activeStep;
@@ -412,10 +412,10 @@ export function OnboardingPage({ initialStep }: OnboardingPageProps) {
             </div>
 
             <div className="mb-8 shrink-0">
-              <h2 className="mb-2 font-heading text-[32px] leading-10 font-semibold text-on-surface">
+              <h2 className="type-page-title mb-2 text-on-surface">
                 {step.title}
               </h2>
-              <p className="text-base leading-6 text-on-surface-variant">
+              <p className="type-body text-on-surface-variant">
                 {step.description}
               </p>
             </div>
@@ -442,14 +442,14 @@ export function OnboardingPage({ initialStep }: OnboardingPageProps) {
                 <button
                   type="button"
                   onClick={handleBack}
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-3 text-sm leading-5 font-semibold text-on-surface-variant transition-colors hover:text-primary active:scale-95"
+                  className="type-button inline-flex cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-3 text-on-surface-variant transition-colors hover:text-primary active:scale-95"
                 >
                   <ArrowLeft className="size-4" />
                   {backLabel}
                 </button>
                 <button
                   type="submit"
-                  className="cursor-pointer rounded-full bg-primary px-10 py-3 text-sm leading-5 font-semibold text-on-primary shadow-lg shadow-primary/20 transition-all hover:bg-primary-container active:scale-95"
+                  className="type-button cursor-pointer rounded-full bg-primary px-10 py-3 text-on-primary shadow-lg shadow-primary/20 transition-all hover:bg-primary-container active:scale-95"
                 >
                   {nextLabel}
                 </button>
@@ -513,7 +513,7 @@ function LifestyleFields({
           <FieldLabel htmlFor="maritalStatus">Marital Status</FieldLabel>
           <select
             id="maritalStatus"
-            className="h-12 w-full cursor-pointer rounded-lg border-none bg-surface px-4 text-base leading-6 text-on-surface ring-1 ring-outline-variant/30 transition-all outline-none focus:ring-2 focus:ring-primary"
+            className="type-body h-12 w-full cursor-pointer rounded-lg border-none bg-surface px-4 text-on-surface ring-1 ring-outline-variant/30 transition-all outline-none focus:ring-2 focus:ring-primary"
             value={values.maritalStatus ?? ""}
             onChange={(event) => onChange("maritalStatus", event.target.value)}
           >
@@ -529,7 +529,7 @@ function LifestyleFields({
         <div className="space-y-3">
           <div className="flex items-center justify-between gap-4">
             <FieldLabel htmlFor="height">Height</FieldLabel>
-            <span className="font-heading text-2xl leading-8 font-semibold text-primary">
+            <span className="type-stat text-primary">
               {height} cm
             </span>
           </div>
@@ -548,7 +548,7 @@ function LifestyleFields({
       <div className="space-y-2">
         <FieldLabel htmlFor="aboutMe">About Me</FieldLabel>
         <textarea
-          className="min-h-[136px] w-full resize-none rounded-lg border-none bg-surface px-4 py-3 text-base leading-6 text-on-surface ring-1 ring-outline-variant/30 transition-all outline-none placeholder:text-on-surface-variant/60 focus:ring-2 focus:ring-primary"
+          className="type-body min-h-[136px] w-full resize-none rounded-lg border-none bg-surface px-4 py-3 text-on-surface ring-1 ring-outline-variant/30 transition-all outline-none placeholder:text-on-surface-variant/60 focus:ring-2 focus:ring-primary"
           id="aboutMe"
           onChange={(event) => onChange("aboutMe", event.target.value)}
           placeholder="Write a few lines about your personality, values, and the life you hope to build."
@@ -568,7 +568,7 @@ function FieldLabel({
 }) {
   return (
     <label
-      className="block text-sm leading-5 font-semibold text-on-surface-variant"
+      className="type-label block text-on-surface-variant"
       htmlFor={htmlFor}
     >
       {children}
@@ -605,7 +605,7 @@ function SegmentedOptions({
             type="button"
             onClick={() => onChange(id, option)}
             className={cn(
-              "flex h-12 min-w-0 cursor-pointer items-center justify-center rounded-lg px-3 text-center text-[13px] leading-5 font-semibold ring-1 transition-all active:scale-[0.98] sm:text-sm",
+              "type-button flex h-12 min-w-0 cursor-pointer items-center justify-center rounded-lg px-3 text-center ring-1 transition-all active:scale-[0.98]",
               isActive
                 ? "bg-primary-container text-on-primary ring-primary"
                 : "bg-surface text-on-surface-variant ring-outline-variant/30 hover:text-primary hover:ring-primary/60",
@@ -633,7 +633,7 @@ function FieldControl({
   value: string;
 }) {
   const sharedInputClass =
-    "h-12 w-full rounded-lg border-none bg-surface px-4 text-base leading-6 text-on-surface ring-1 ring-outline-variant/30 transition-all outline-none placeholder:text-on-surface-variant/60 focus:ring-2 focus:ring-primary";
+    "type-body h-12 w-full rounded-lg border-none bg-surface px-4 text-on-surface ring-1 ring-outline-variant/30 transition-all outline-none placeholder:text-on-surface-variant/60 focus:ring-2 focus:ring-primary";
 
   if (field.type === "radio") {
     const isWideGroup = field.options.length >= 4;
@@ -657,7 +657,7 @@ function FieldControl({
                 type="button"
                 onClick={() => onChange(field.id, option)}
                 className={cn(
-                  "flex h-12 min-w-0 cursor-pointer items-center justify-center rounded-lg px-3 text-center text-[13px] leading-5 font-semibold ring-1 transition-all active:scale-[0.98] sm:text-sm",
+                  "type-button flex h-12 min-w-0 cursor-pointer items-center justify-center rounded-lg px-3 text-center ring-1 transition-all active:scale-[0.98]",
                   isActive
                     ? "bg-primary-container text-on-primary ring-primary"
                     : "bg-surface text-on-surface-variant ring-outline-variant/30 hover:text-primary hover:ring-primary/60",
@@ -699,7 +699,7 @@ function FieldControl({
   if (field.type === "chips") {
     return (
       <div className="flex h-full flex-col justify-start gap-2 md:col-span-2">
-        <label className="block h-5 text-sm leading-5 font-semibold text-on-surface-variant">
+        <label className="type-label block h-5 text-on-surface-variant">
           {field.label}
         </label>
         <div className="flex min-h-12 flex-wrap content-start gap-2">
@@ -712,7 +712,7 @@ function FieldControl({
                 type="button"
                 onClick={() => onToggleChip(field.id, option)}
                 className={cn(
-                  "h-9 cursor-pointer rounded-full border px-4 text-xs leading-4 font-semibold transition-all active:scale-95",
+                  "type-caption h-9 cursor-pointer rounded-full border px-4 font-semibold transition-all active:scale-95",
                   isActive
                     ? "border-primary bg-primary-container text-on-primary"
                     : "border-outline-variant/40 bg-surface text-on-surface-variant hover:border-primary hover:text-primary",
@@ -734,12 +734,12 @@ function FieldControl({
       <div className="flex h-full flex-col justify-center gap-3 md:col-span-2">
         <div className="flex items-center justify-between gap-4">
           <label
-            className="block h-5 text-sm leading-5 font-semibold text-on-surface-variant"
+            className="type-label block h-5 text-on-surface-variant"
             htmlFor={field.id}
           >
             {field.label}
           </label>
-          <span className="font-heading text-2xl leading-8 font-semibold text-primary">
+          <span className="type-stat text-primary">
             {currentValue} {field.unit}
           </span>
         </div>
@@ -760,7 +760,7 @@ function FieldControl({
     return (
       <div className="flex h-full flex-col justify-start gap-2 md:col-span-2 md:row-span-2">
         <label
-          className="block h-5 text-sm leading-5 font-semibold text-on-surface-variant"
+          className="type-label block h-5 text-on-surface-variant"
           htmlFor={field.id}
         >
           {field.label}
@@ -807,7 +807,7 @@ function FormBlock({
   return (
     <div className={cn("flex h-full flex-col justify-start gap-2", className)}>
       <label
-        className="block h-5 text-sm leading-5 font-semibold text-on-surface-variant"
+        className="type-label block h-5 text-on-surface-variant"
         htmlFor={htmlFor}
       >
         {label}

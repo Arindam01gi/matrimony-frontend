@@ -23,11 +23,11 @@ import {
 import { PROFILE_DETAILS_PATH } from "@/lib/routes";
 
 const categories = [
-  { label: "All", detail: "Every active chat", count: 18, icon: MessageCircle, active: true },
-  { label: "Interests", detail: "Accepted interests", count: 4, icon: Heart, active: false },
-  { label: "Matches", detail: "Mutual matches", count: 9, icon: Users, active: false },
-  { label: "Unread", detail: "Needs reply", count: 3, icon: Clock3, active: false },
-  { label: "Archived", detail: "Quiet threads", count: 2, icon: Archive, active: false },
+  { label: "All chats", count: 18, icon: MessageCircle, active: true },
+  { label: "Interests", count: 4, icon: Heart, active: false },
+  { label: "Matches", count: 9, icon: Users, active: false },
+  { label: "Unread", count: 3, icon: Clock3, active: false },
+  { label: "Archived", count: 2, icon: Archive, active: false },
 ] as const;
 
 const conversations = [
@@ -115,28 +115,24 @@ const messages = [
 export function ChatPage() {
   return (
     <div className="min-h-screen bg-surface text-on-surface">
-      <main className="mx-auto flex min-h-screen max-w-[1440px] flex-col px-4 pt-24 pb-28 md:px-8 lg:pb-16">
-        <section className="mb-5 flex flex-col justify-between gap-4 xl:flex-row xl:items-end">
+      <main className="mx-auto flex min-h-screen w-full max-w-[1440px] flex-col px-4 pt-24 pb-28 md:px-8 lg:pb-16">
+        <section className="mb-5 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-surface-container-low px-3 py-1 text-xs leading-4 font-semibold text-primary">
+            <div className="type-caption mb-3 inline-flex items-center gap-2 rounded-full bg-surface-container-low px-3 py-1 font-semibold text-primary">
               <MessageCircle className="size-4" />
-              <span>Thoughtful conversations</span>
+              <span>Messages</span>
             </div>
-            <h1 className="font-heading text-[32px] leading-10 font-semibold">
+            <h1 className="type-app-title">
               Chat
             </h1>
-            <p className="mt-2 max-w-2xl text-base leading-6 text-on-surface-variant">
-              A focused place to continue accepted interests and mutual matches,
-              with just enough context to keep every conversation meaningful.
-            </p>
           </div>
-          <div className="flex w-fit items-center gap-2 rounded-lg border border-outline-variant/20 bg-white px-4 py-2.5 text-sm leading-5 text-on-surface-variant shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+          <div className="type-label flex w-fit items-center gap-2 rounded-lg border border-outline-variant/20 bg-white px-4 py-2.5 text-on-surface-variant shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
             <ShieldCheck className="size-5 text-primary" />
             <span>Mutual interest required</span>
           </div>
         </section>
 
-        <section className="grid min-h-[720px] overflow-hidden rounded-xl border border-outline-variant/20 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] lg:grid-cols-[220px_minmax(310px,360px)_minmax(0,1fr)]">
+        <section className="grid min-h-[720px] min-w-0 overflow-hidden rounded-xl border border-outline-variant/20 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.04)] lg:grid-cols-[236px_minmax(320px,370px)_minmax(0,1fr)]">
           <ConnectionRail />
           <ConversationList />
           <ActiveThread />
@@ -148,15 +144,32 @@ export function ChatPage() {
 
 function ConnectionRail() {
   return (
-    <aside className="border-b border-outline-variant/20 bg-surface-container-low/45 p-3 lg:border-r lg:border-b-0 lg:p-4">
-      <div className="hidden px-2 pt-1 lg:block">
-        <h2 className="font-heading text-2xl leading-8 font-semibold">Connect</h2>
-        <p className="mt-1 text-xs leading-4 text-on-surface-variant">
-          Manage messages
+    <aside className="min-w-0 border-b border-outline-variant/20 bg-[#fffdfd] p-3 lg:flex lg:flex-col lg:border-r lg:border-b-0 lg:p-0">
+      <div className="hidden border-b border-outline-variant/10 px-5 py-5 lg:block">
+        <p className="type-eyebrow text-primary">
+          Inbox
         </p>
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className="rounded-lg bg-surface-container-low px-3 py-2">
+            <p className="type-stat text-primary">
+              18
+            </p>
+            <p className="type-micro font-normal text-on-surface-variant">
+              Active
+            </p>
+          </div>
+          <div className="rounded-lg bg-surface-container-low px-3 py-2">
+            <p className="type-stat text-primary">
+              3
+            </p>
+            <p className="type-micro font-normal text-on-surface-variant">
+              Unread
+            </p>
+          </div>
+        </div>
       </div>
 
-      <nav className="flex gap-2 overflow-x-auto lg:mt-6 lg:flex-col lg:overflow-visible">
+      <nav className="flex gap-2 overflow-x-auto lg:flex-col lg:gap-1 lg:overflow-visible lg:p-3">
         {categories.map((item) => {
           const Icon = item.icon;
 
@@ -165,29 +178,33 @@ function ConnectionRail() {
               key={item.label}
               type="button"
               className={[
-                "flex min-h-12 shrink-0 cursor-pointer items-center gap-3 rounded-lg px-3 text-sm leading-5 font-semibold transition-all active:scale-95 lg:w-full",
+                "type-button group relative flex min-h-11 shrink-0 cursor-pointer items-center gap-3 rounded-lg px-3 transition-all active:scale-95 lg:w-full",
                 item.active
-                  ? "bg-primary text-white shadow-sm"
-                  : "bg-white text-on-surface-variant hover:bg-surface-container-high lg:bg-transparent",
+                  ? "bg-surface-container-low text-primary"
+                  : "bg-white text-on-surface-variant hover:bg-surface-container-low lg:bg-transparent",
               ].join(" ")}
             >
-              <Icon className="size-5 shrink-0" />
-              <span className="min-w-0 text-left">
-                <span className="block truncate">{item.label}</span>
-                <span
-                  className={[
-                    "hidden truncate text-[11px] leading-4 font-medium lg:block",
-                    item.active ? "text-white/75" : "text-on-surface-variant/70",
-                  ].join(" ")}
-                >
-                  {item.detail}
-                </span>
+              {item.active ? (
+                <span className="absolute top-2 bottom-2 left-0 w-1 rounded-r-full bg-primary" />
+              ) : null}
+              <span
+                className={[
+                  "flex size-8 shrink-0 items-center justify-center rounded-lg transition-colors",
+                  item.active
+                    ? "bg-white text-primary shadow-sm"
+                    : "bg-surface-container-low text-on-surface-variant group-hover:text-primary",
+                ].join(" ")}
+              >
+                <Icon className="size-4.5" />
+              </span>
+              <span className="min-w-0 flex-1 truncate text-left">
+                {item.label}
               </span>
               <span
                 className={[
-                  "ml-auto rounded-full px-2 py-0.5 text-[10px] leading-4",
+                  "type-caption rounded-full px-2 py-0.5 font-bold",
                   item.active
-                    ? "bg-white/18 text-white"
+                    ? "bg-primary text-white"
                     : "bg-surface-container-high text-on-surface-variant",
                 ].join(" ")}
               >
@@ -198,16 +215,21 @@ function ConnectionRail() {
         })}
       </nav>
 
-      <div className="mt-5 hidden rounded-lg border border-outline-variant/20 bg-white p-4 lg:block">
-        <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-secondary-container text-on-secondary-container">
-          <LockKeyhole className="size-5" />
+      <div className="mx-3 mb-3 mt-auto hidden rounded-lg border border-outline-variant/20 bg-surface-container-low p-4 lg:block">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="flex size-9 items-center justify-center rounded-lg bg-white text-primary">
+            <LockKeyhole className="size-4.5" />
+          </span>
+          <p className="type-label text-on-surface">
+            Safe chat
+          </p>
         </div>
-        <p className="text-sm leading-5 font-bold text-primary">
-          Privacy controls
-        </p>
-        <p className="mt-1 text-xs leading-4 text-on-surface-variant">
-          Keep conversations comfortable with safety tools close by.
-        </p>
+        <button
+          type="button"
+          className="type-caption w-full cursor-pointer rounded-lg bg-white px-3 py-2 font-bold text-primary transition-colors hover:bg-surface"
+        >
+          Review settings
+        </button>
       </div>
     </aside>
   );
@@ -215,23 +237,23 @@ function ConnectionRail() {
 
 function ConversationList() {
   return (
-    <aside className="border-b border-outline-variant/20 bg-white lg:border-r lg:border-b-0">
+    <aside className="min-w-0 border-b border-outline-variant/20 bg-white lg:border-r lg:border-b-0">
       <div className="border-b border-outline-variant/10 p-4">
         <div className="mb-3 flex items-center justify-between gap-3">
           <div>
-            <h2 className="text-sm leading-5 font-bold">Messages</h2>
-            <p className="text-xs leading-4 text-on-surface-variant">
+            <h2 className="type-label">Messages</h2>
+            <p className="type-caption text-on-surface-variant">
               3 unread conversations
             </p>
           </div>
-          <span className="rounded-full bg-surface-container-low px-3 py-1 text-xs leading-4 font-bold text-primary">
+          <span className="type-caption rounded-full bg-surface-container-low px-3 py-1 font-bold text-primary">
             Live
           </span>
         </div>
         <label className="relative block">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-on-surface-variant" />
           <input
-            className="w-full rounded-lg border-0 bg-surface-container-low py-3 pr-4 pl-10 text-sm leading-5 text-on-surface outline-none transition-shadow placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/30"
+            className="type-body-sm w-full rounded-lg border-0 bg-surface-container-low py-3 pr-4 pl-10 text-on-surface outline-none transition-shadow placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary/30"
             placeholder="Search by name or interest..."
             type="search"
           />
@@ -244,7 +266,7 @@ function ConversationList() {
             key={conversation.name}
             type="button"
             className={[
-              "grid cursor-pointer grid-cols-[52px_minmax(0,1fr)] gap-3 border-b border-outline-variant/10 p-4 text-left transition-colors hover:bg-surface-container-low",
+              "grid min-w-0 cursor-pointer grid-cols-[52px_minmax(0,1fr)] gap-3 border-b border-outline-variant/10 p-4 text-left transition-colors hover:bg-surface-container-low",
               conversation.active ? "border-l-4 border-l-primary bg-primary/5" : "",
             ].join(" ")}
           >
@@ -263,28 +285,28 @@ function ConversationList() {
             <span className="min-w-0">
               <span className="mb-1 flex items-start justify-between gap-3">
                 <span className="min-w-0">
-                  <span className="block truncate text-sm leading-5 font-bold">
+                  <span className="type-label block truncate">
                     {conversation.name}
                   </span>
-                  <span className="block truncate text-xs leading-4 text-on-surface-variant">
+                  <span className="type-caption block truncate text-on-surface-variant">
                     {conversation.meta}
                   </span>
                 </span>
-                <span className="shrink-0 text-[10px] leading-4 font-semibold text-on-surface-variant">
+                <span className="type-caption shrink-0 font-semibold text-on-surface-variant">
                   {conversation.time}
                 </span>
               </span>
               <span className="mb-2 flex items-center justify-between gap-2">
-                <span className="truncate text-xs leading-4 font-bold text-primary">
+                <span className="type-caption truncate font-bold text-primary">
                   {conversation.label}
                 </span>
                 {conversation.unread > 0 ? (
-                  <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] leading-4 font-bold text-white">
+                  <span className="type-caption rounded-full bg-primary px-2 py-0.5 font-bold text-white">
                     {conversation.unread}
                   </span>
                 ) : null}
               </span>
-              <span className="line-clamp-2 text-xs leading-4 text-on-surface-variant">
+              <span className="type-caption line-clamp-2 text-on-surface-variant">
                 {conversation.preview}
               </span>
             </span>
@@ -313,10 +335,10 @@ function ActiveThread() {
               <span className="absolute right-0 bottom-0 size-3 rounded-full border-2 border-white bg-[#16a34a]" />
             </div>
             <div className="min-w-0">
-              <h2 className="truncate font-heading text-2xl leading-8 font-semibold">
+              <h2 className="type-profile-name truncate">
                 {activeMember.name}
               </h2>
-              <p className="truncate text-xs leading-4 font-semibold text-on-surface-variant">
+              <p className="type-caption truncate font-semibold text-on-surface-variant">
                 {activeMember.age} - {activeMember.role}
               </p>
             </div>
@@ -328,7 +350,7 @@ function ActiveThread() {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-xs leading-4 text-on-surface-variant">
+        <div className="type-caption mt-4 flex flex-wrap items-center gap-2 text-on-surface-variant">
           <span className="inline-flex items-center gap-1 rounded-full bg-surface-container-low px-3 py-1 font-semibold">
             <BadgeCheck className="size-3.5 text-primary" />
             {activeMember.trust}
@@ -351,7 +373,7 @@ function ActiveThread() {
 
       <div className="flex-1 space-y-6 overflow-y-auto px-4 py-6 md:px-8">
         <div className="flex justify-center">
-          <span className="rounded-full bg-surface-container-high px-4 py-1.5 text-xs leading-4 font-bold text-on-surface-variant">
+          <span className="type-caption rounded-full bg-surface-container-high px-4 py-1.5 font-bold text-on-surface-variant">
             Today
           </span>
         </div>
@@ -369,20 +391,20 @@ function ActiveThread() {
         <div className="flex items-center gap-2 rounded-lg border border-outline-variant/20 bg-surface px-3 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
           <IconButton label="Attach a file" icon={<Paperclip className="size-5" />} />
           <input
-            className="min-w-0 flex-1 border-0 bg-transparent px-2 text-base leading-6 outline-none placeholder:text-on-surface-variant focus:ring-0"
+            className="type-body min-w-0 flex-1 border-0 bg-transparent px-2 outline-none placeholder:text-on-surface-variant focus:ring-0"
             placeholder="Write a message..."
             type="text"
           />
           <IconButton label="Add emoji" icon={<Smile className="size-5" />} />
           <button
             type="button"
-            className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm leading-5 font-semibold text-white transition-colors hover:bg-primary-container active:scale-95"
+            className="type-button inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-lg bg-primary px-4 py-3 text-white transition-colors hover:bg-primary-container active:scale-95"
           >
             <span>Send</span>
             <Send className="size-4" />
           </button>
         </div>
-        <div className="mt-3 flex flex-wrap justify-center gap-4 text-xs leading-4 text-on-surface-variant">
+        <div className="type-caption mt-3 flex flex-wrap justify-center gap-4 text-on-surface-variant">
           <button type="button" className="cursor-pointer hover:text-primary">
             Safety tips
           </button>
@@ -403,15 +425,15 @@ function CompatibilityStrip() {
           <Star className="size-5 fill-current" />
         </div>
         <div className="min-w-0">
-          <h3 className="text-sm leading-5 font-bold text-primary">
+          <h3 className="type-label text-primary">
             {activeMember.match} compatibility
           </h3>
-          <p className="truncate text-xs leading-4 text-on-surface-variant">
+          <p className="type-caption truncate text-on-surface-variant">
             Shared interests: {activeMember.interests.join(", ")}
           </p>
         </div>
       </div>
-      <span className="w-fit rounded-full bg-surface-container-low px-3 py-1 text-xs leading-4 font-semibold text-on-surface-variant">
+      <span className="type-caption w-fit rounded-full bg-surface-container-low px-3 py-1 font-semibold text-on-surface-variant">
         Mutual interest
       </span>
     </section>
@@ -433,10 +455,10 @@ function MessageBubble({
             : "border border-outline-variant/10 bg-white text-on-surface",
         ].join(" ")}
       >
-        <p className="text-base leading-7">{message.body}</p>
+        <p className="type-body">{message.body}</p>
         <p
           className={[
-            "mt-3 text-right text-xs leading-4",
+            "type-caption mt-3 text-right",
             message.mine ? "text-white/80" : "text-on-surface-variant",
           ].join(" ")}
         >

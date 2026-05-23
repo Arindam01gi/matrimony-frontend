@@ -24,17 +24,17 @@ export function AuthPanel({ mode }: AuthPanelProps) {
   return (
     <section className="flex w-full flex-col justify-center bg-surface px-5 py-12 md:w-1/2 md:px-16 lg:w-2/5 lg:px-24">
       <div className="mb-12 md:hidden">
-        <h1 className="font-heading text-2xl leading-8 font-semibold text-primary italic">
+        <h1 className="type-brand text-primary">
           {authCopy.brand}
         </h1>
       </div>
 
       <div className="mx-auto w-full max-w-md space-y-8">
         <header className="space-y-2">
-          <h2 className="font-heading text-[32px] leading-10 font-semibold text-on-surface">
+          <h2 className="type-page-title text-on-surface">
             {copy.title}
           </h2>
-          <p className="text-base leading-6 text-on-surface-variant">
+          <p className="type-body text-on-surface-variant">
             {copy.description}
           </p>
         </header>
