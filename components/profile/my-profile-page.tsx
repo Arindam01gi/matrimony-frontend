@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import {
   Bell,
@@ -14,6 +15,8 @@ import {
   ShieldCheck,
   User,
 } from "lucide-react";
+
+import { EDIT_PROFILE_PATH } from "@/lib/routes";
 
 const profileImage = "/images/landing/stories/ananya-rahul.jpg";
 
@@ -109,13 +112,13 @@ export function MyProfilePage() {
                 <h2 className="font-heading text-2xl leading-8 font-semibold text-primary">
                   Account Details
                 </h2>
-                <button
-                  type="button"
+                <Link
                   className="inline-flex cursor-pointer items-center gap-1 text-sm leading-5 font-semibold text-primary transition-colors hover:underline"
+                  href={EDIT_PROFILE_PATH}
                 >
                   <Edit3 className="size-4" />
                   <span>Edit Profile</span>
-                </button>
+                </Link>
               </div>
               <div className="grid gap-8 md:grid-cols-2">
                 <ProfileField label="Full Name" value="Ananya Das" />
