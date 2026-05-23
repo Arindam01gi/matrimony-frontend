@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import type { FormEvent } from "react";
 
@@ -15,11 +16,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AUTH_LOGIN_PATH } from "@/lib/routes";
+import { AUTH_LOGIN_PATH, ONBOARDING_PATH } from "@/lib/routes";
 
 export function SignupForm() {
+  const router = useRouter();
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    router.push(ONBOARDING_PATH);
   };
 
   return (
