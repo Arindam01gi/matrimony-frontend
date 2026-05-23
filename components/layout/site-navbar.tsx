@@ -19,6 +19,7 @@ import {
   AUTH_REGISTER_PATH,
   DISCOVERY_PATH,
   MY_PROFILE_PATH,
+  NOTIFICATIONS_PATH,
 } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
@@ -136,13 +137,19 @@ export function SiteNavbar() {
             </Link>
           </div>
 
-          <button
+          <Link
             aria-label="Open notifications"
-            className="inline-flex size-10 cursor-pointer items-center justify-center text-on-surface-variant transition-colors hover:text-primary active:scale-95"
-            type="button"
+            className={cn(
+              "relative inline-flex size-10 cursor-pointer items-center justify-center transition-colors hover:text-primary active:scale-95",
+              pathname.startsWith(NOTIFICATIONS_PATH)
+                ? "text-primary"
+                : "text-on-surface-variant",
+            )}
+            href={NOTIFICATIONS_PATH}
           >
             <Bell className="size-7 stroke-[2.1]" />
-          </button>
+            <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-primary" />
+          </Link>
 
           <Link
             href={MY_PROFILE_PATH}

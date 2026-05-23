@@ -393,17 +393,6 @@ export function EditProfilePage() {
         </div>
       </main>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 px-5 pb-5 md:px-10 md:pb-7">
-        <div className="mx-auto flex max-w-[1240px] justify-end">
-          <div className="pointer-events-auto flex w-full items-center justify-between gap-4 rounded-xl border border-outline-variant/30 bg-surface/95 p-3 shadow-[0_8px_32px_rgba(34,25,25,0.14)] backdrop-blur-md sm:w-auto">
-            <p className="hidden max-w-xs text-sm leading-5 text-on-surface-variant sm:block">
-              Changes are saved locally in this prototype.
-            </p>
-            <SaveButton isSaving={isSaving} onSave={handleSave} compact />
-          </div>
-        </div>
-      </div>
-
       <div
         className={cn(
           "fixed bottom-8 left-1/2 z-[60] flex -translate-x-1/2 items-center gap-3 rounded-xl bg-on-surface px-6 py-4 text-sm leading-5 font-semibold text-surface shadow-2xl transition-all duration-300",
@@ -422,11 +411,9 @@ export function EditProfilePage() {
 }
 
 function SaveButton({
-  compact = false,
   isSaving,
   onSave,
 }: {
-  compact?: boolean;
   isSaving: boolean;
   onSave: () => void;
 }) {
@@ -435,10 +422,7 @@ function SaveButton({
       type="button"
       onClick={onSave}
       disabled={isSaving}
-      className={cn(
-        "inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-primary text-sm leading-5 font-semibold text-on-primary shadow-lg transition-all hover:brightness-110 active:scale-95 disabled:cursor-wait disabled:opacity-80",
-        compact ? "px-6 max-sm:flex-1" : "px-7",
-      )}
+      className="inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-7 text-sm leading-5 font-semibold text-on-primary shadow-lg transition-all hover:brightness-110 active:scale-95 disabled:cursor-wait disabled:opacity-80"
     >
       {isSaving ? (
         <LoaderCircle className="size-4 animate-spin" />
