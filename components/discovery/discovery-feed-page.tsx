@@ -4,15 +4,11 @@ import {
   Bolt,
   ChevronDown,
   CirclePlus,
-  Compass,
   Crown,
-  Heart,
-  MessageCircle,
-  User,
   Verified,
 } from "lucide-react";
 
-import { DISCOVERY_PATH, LIKES_PATH, MY_PROFILE_PATH, PROFILE_DETAILS_PATH } from "@/lib/routes";
+import { PROFILE_DETAILS_PATH } from "@/lib/routes";
 
 const profiles = [
   {
@@ -130,7 +126,6 @@ export function DiscoveryFeedPage() {
         <ActivitySidebar />
       </main>
 
-      <MobileDiscoveryNav />
       <button
         type="button"
         aria-label="Add new discovery action"
@@ -373,38 +368,5 @@ function ActivitySidebar() {
         </section>
       </div>
     </aside>
-  );
-}
-
-function MobileDiscoveryNav() {
-  const items = [
-    { label: "Discovery", icon: Compass, href: DISCOVERY_PATH, active: true },
-    { label: "Likes", icon: Heart, href: LIKES_PATH, active: false },
-    { label: "Chat", icon: MessageCircle, href: "#", active: false },
-    { label: "Profile", icon: User, href: MY_PROFILE_PATH, active: false },
-  ] as const;
-
-  return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 flex h-20 items-center justify-around rounded-t-xl border-t border-outline-variant/20 bg-surface/90 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] backdrop-blur-lg md:hidden">
-      {items.map((item) => {
-        const Icon = item.icon;
-
-        return (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={[
-              "flex flex-col items-center justify-center transition-all active:scale-90",
-              item.active
-                ? "rounded-full bg-primary-container px-4 py-1 text-on-primary-container"
-                : "text-on-surface-variant hover:text-primary",
-            ].join(" ")}
-          >
-            <Icon className={["size-6", item.active ? "fill-current" : ""].join(" ")} />
-            <span className="text-xs leading-4 font-medium">{item.label}</span>
-          </Link>
-        );
-      })}
-    </nav>
   );
 }
