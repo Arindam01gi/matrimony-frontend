@@ -12,7 +12,7 @@ import {
   Verified,
 } from "lucide-react";
 
-import { MY_PROFILE_PATH, PROFILE_DETAILS_PATH } from "@/lib/routes";
+import { DISCOVERY_PATH, LIKES_PATH, MY_PROFILE_PATH, PROFILE_DETAILS_PATH } from "@/lib/routes";
 
 const profiles = [
   {
@@ -378,8 +378,8 @@ function ActivitySidebar() {
 
 function MobileDiscoveryNav() {
   const items = [
-    { label: "Discovery", icon: Compass, href: "/discovery", active: true },
-    { label: "Likes", icon: Heart, href: "#", active: false },
+    { label: "Discovery", icon: Compass, href: DISCOVERY_PATH, active: true },
+    { label: "Likes", icon: Heart, href: LIKES_PATH, active: false },
     { label: "Chat", icon: MessageCircle, href: "#", active: false },
     { label: "Profile", icon: User, href: MY_PROFILE_PATH, active: false },
   ] as const;

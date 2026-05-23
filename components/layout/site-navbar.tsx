@@ -18,6 +18,7 @@ import {
   AUTH_LOGIN_PATH,
   AUTH_REGISTER_PATH,
   DISCOVERY_PATH,
+  LIKES_PATH,
   MY_PROFILE_PATH,
   NOTIFICATIONS_PATH,
 } from "@/lib/routes";
@@ -27,7 +28,7 @@ const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: DISCOVERY_PATH, label: "Discovery", icon: Compass },
   { href: "/premium", label: "Premium", icon: Crown },
-  { href: "#", label: "Likes", icon: Heart, hasDot: true },
+  { href: LIKES_PATH, label: "Likes", icon: Heart, hasDot: true },
   { href: "#", label: "Chat", icon: MessageCircle, hasDot: true },
 ] as const;
 
