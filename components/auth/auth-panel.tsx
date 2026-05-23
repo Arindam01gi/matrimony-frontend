@@ -22,8 +22,8 @@ export function AuthPanel({ mode }: AuthPanelProps) {
   const copy = formCopy[mode];
 
   return (
-    <section className="flex w-full flex-col justify-center bg-surface px-5 py-10 sm:px-8 md:w-1/2 md:px-12 lg:w-2/5 lg:px-20 xl:px-24">
-      <div className="mb-12 md:hidden">
+    <section className="relative z-10 flex w-full flex-col justify-center bg-surface px-5 py-10 sm:px-8 md:w-1/2 md:px-12 lg:w-2/5 lg:px-20 xl:px-24">
+      <div className="mb-10">
         <h1 className="type-brand text-primary">
           {authCopy.brand}
         </h1>
@@ -31,6 +31,9 @@ export function AuthPanel({ mode }: AuthPanelProps) {
 
       <div className="mx-auto w-full max-w-md space-y-8">
         <header className="space-y-2">
+          <p className="type-eyebrow text-primary">
+            {mode === "login" ? "Member Access" : "Create Profile"}
+          </p>
           <h2 className="type-page-title text-on-surface">
             {copy.title}
           </h2>

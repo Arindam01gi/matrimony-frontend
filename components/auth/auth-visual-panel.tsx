@@ -1,28 +1,20 @@
 import Image from "next/image";
 
-import { authCopy } from "@/components/auth/auth-content";
-
 export function AuthVisualPanel() {
   return (
-    <section className="relative hidden overflow-hidden bg-surface-dim md:flex md:w-1/2 lg:w-3/5">
+    <section className="relative min-h-[260px] overflow-hidden bg-surface md:min-h-svh md:w-1/2 lg:w-3/5">
       <Image
         alt="Traditional Bengali wedding detail with henna, bangles, and red silk."
-        className="object-cover opacity-95 grayscale-[12%] sepia-[8%] transition-transform duration-[10000ms] hover:scale-110"
+        className="object-cover object-[58%_40%] saturate-[1.03] contrast-[1.02] md:object-[55%_50%]"
         fill
         priority
         quality={100}
-        sizes="(min-width: 1024px) 60vw, 50vw"
+        sizes="(min-width: 1024px) 60vw, (min-width: 768px) 50vw, 100vw"
         src="/images/auth/login-heritage-v2.png"
       />
 
-      <div className="absolute top-8 left-8 z-10 max-w-sm rounded-xl bg-inverse-surface/55 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm lg:top-12 lg:left-12">
-        <h1 className="type-brand text-primary-fixed-dim">
-          {authCopy.brand}
-        </h1>
-        <p className="type-body mt-2 text-surface-bright/90">
-          {authCopy.visualDescription}
-        </p>
-      </div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgba(254,191,0,0.12),transparent_30%),linear-gradient(180deg,rgba(255,248,247,0)_42%,var(--surface)_100%)] md:bg-[radial-gradient(circle_at_16%_12%,rgba(254,191,0,0.12),transparent_32%),linear-gradient(90deg,rgba(255,248,247,0)_0%,rgba(255,248,247,0.08)_48%,rgba(255,248,247,0.72)_78%,var(--surface)_100%)]" />
+      <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-r from-transparent to-surface md:block" />
     </section>
   );
 }
