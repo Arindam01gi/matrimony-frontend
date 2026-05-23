@@ -8,7 +8,7 @@ interface AuthPageProps {
 
 export function AuthPage({ mode }: AuthPageProps) {
   return (
-    <main className="flex min-h-screen overflow-hidden bg-surface">
+    <main className="flex min-h-svh overflow-hidden bg-surface">
       <AuthVisualPanel />
       <AuthPanel mode={mode} />
     </main>

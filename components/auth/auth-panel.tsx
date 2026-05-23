@@ -22,7 +22,7 @@ export function AuthPanel({ mode }: AuthPanelProps) {
   const copy = formCopy[mode];
 
   return (
-    <section className="flex w-full flex-col justify-center bg-surface px-5 py-12 md:w-1/2 md:px-16 lg:w-2/5 lg:px-24">
+    <section className="flex w-full flex-col justify-center bg-surface px-5 py-10 sm:px-8 md:w-1/2 md:px-12 lg:w-2/5 lg:px-20 xl:px-24">
       <div className="mb-12 md:hidden">
         <h1 className="type-brand text-primary">
           {authCopy.brand}

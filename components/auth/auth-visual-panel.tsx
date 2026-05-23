@@ -12,10 +12,10 @@ export function AuthVisualPanel() {
         priority
         quality={100}
         sizes="(min-width: 1024px) 60vw, 50vw"
-        src="/images/auth/login-heritage.jpg"
+        src="/images/auth/login-heritage-v2.png"
       />
 
-      <div className="absolute top-12 left-12 z-10 max-w-sm rounded-xl bg-inverse-surface/55 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm">
+      <div className="absolute top-8 left-8 z-10 max-w-sm rounded-xl bg-inverse-surface/55 p-5 shadow-2xl shadow-black/20 backdrop-blur-sm lg:top-12 lg:left-12">
         <h1 className="type-brand text-primary-fixed-dim">
           {authCopy.brand}
         </h1>

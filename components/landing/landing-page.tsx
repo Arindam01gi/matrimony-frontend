@@ -6,7 +6,7 @@ import { SuccessStoriesSection } from "@/components/landing/success-stories-sect
 export function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
-      <main className="pt-20">
+      <main className="pt-16">
         <LandingHero />
         <HowItWorksSection />
         <SuccessStoriesSection />

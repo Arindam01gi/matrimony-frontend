@@ -3,74 +3,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Bell,
-  Compass,
-  Crown,
-  Heart,
-  Home,
-  Menu,
-  MessageCircle,
-  User,
-  X,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import {
   AUTH_LOGIN_PATH,
   AUTH_REGISTER_PATH,
-  CHAT_PATH,
-  DISCOVERY_PATH,
-  LIKES_PATH,
   MY_PROFILE_PATH,
   NOTIFICATIONS_PATH,
 } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
-const PREMIUM_PATH = "/premium";
+import { SiteBottomNav } from "./site-bottom-nav";
+import { CompactMenu } from "./site-compact-menu";
+import {
+  iconButtonClass,
+  isAppRoute,
+  navItems,
+  NotificationIcon,
+} from "./site-navbar-data";
+import { MemberIconLink, PrimaryNavItem } from "./site-nav-items";
 
-const navItems = [
-  { href: "/", label: "Home", icon: Home },
-  { href: DISCOVERY_PATH, label: "Discovery", icon: Compass },
-  { href: PREMIUM_PATH, label: "Premium", icon: Crown },
-  { href: LIKES_PATH, label: "Likes", icon: Heart },
-  { href: CHAT_PATH, label: "Chat", icon: MessageCircle },
-] as const;
-
-const appBottomNavItems = [
-  { href: DISCOVERY_PATH, label: "Discovery", icon: Compass },
-  { href: PREMIUM_PATH, label: "Premium", icon: Crown },
-  { href: LIKES_PATH, label: "Likes", icon: Heart },
-  { href: CHAT_PATH, label: "Chat", icon: MessageCircle },
-  { href: MY_PROFILE_PATH, label: "Profile", icon: User },
-] as const;
-
-const appRoutePrefixes = [
-  DISCOVERY_PATH,
-  PREMIUM_PATH,
-  LIKES_PATH,
-  CHAT_PATH,
-  NOTIFICATIONS_PATH,
-  MY_PROFILE_PATH,
-  "/edit-profile",
-  "/partner-preference",
-  "/profile-details",
-] as const;
-
-const iconButtonClass =
-  "inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full text-on-surface-variant transition-all hover:bg-surface-container-high hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95";
-
-function isCurrentPath(pathname: string, href?: string) {
-  if (!href) {
-    return false;
-  }
-
-  return href === "/" ? pathname === "/" : pathname.startsWith(href);
-}
-
-function isAppRoute(pathname: string) {
-  return appRoutePrefixes.some((prefix) => pathname.startsWith(prefix));
-}
+export { SiteBottomNav };
 
 export function SiteNavbar() {
   const pathname = usePathname();
@@ -132,60 +86,8 @@ export function SiteNavbar() {
         </nav>
 
         <div className="flex min-w-0 items-center justify-end gap-2 md:gap-3">
-          {isLanding ? (
-            <div className="hidden items-center gap-3 sm:flex">
-              <Link
-                className="type-button inline-flex min-h-11 cursor-pointer items-center rounded-full border border-primary/70 px-5 text-primary transition-all hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
-                href={AUTH_LOGIN_PATH}
-              >
-                Login
-              </Link>
-              <Link
-                className="type-button inline-flex min-h-11 cursor-pointer items-center rounded-full bg-primary-container px-5 text-white shadow-[0_8px_20px_rgba(154,0,41,0.14)] transition-all hover:bg-primary hover:shadow-[0_10px_26px_rgba(154,0,41,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
-                href={AUTH_REGISTER_PATH}
-              >
-                Register Free
-              </Link>
-            </div>
-          ) : null}
-
-          {showMemberTools ? (
-            <>
-              <Link
-                aria-label="Open notifications"
-                className={cn(
-                  iconButtonClass,
-                  pathname.startsWith(NOTIFICATIONS_PATH)
-                    ? "bg-surface-container-low text-primary"
-                    : "text-on-surface-variant",
-                )}
-                href={NOTIFICATIONS_PATH}
-              >
-                <Bell className="size-6 stroke-[2.1]" />
-              </Link>
-
-              <Link
-                href={MY_PROFILE_PATH}
-                aria-label="Open my profile"
-                aria-current={pathname.startsWith(MY_PROFILE_PATH) ? "page" : undefined}
-                className={cn(
-                  "relative size-11 shrink-0 overflow-hidden rounded-full border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95",
-                  pathname.startsWith(MY_PROFILE_PATH)
-                    ? "border-primary shadow-[0_0_0_4px_rgba(154,0,41,0.08)]"
-                    : "border-outline-variant hover:border-primary",
-                )}
-              >
-                <Image
-                  fill
-                  priority
-                  sizes="44px"
-                  src="/images/landing/stories/ananya-rahul.jpg"
-                  alt="Signed-in member profile photo"
-                  className="object-cover"
-                />
-              </Link>
-            </>
-          ) : null}
+          {isLanding ? <LandingActions /> : null}
+          {showMemberTools ? <MemberActions pathname={pathname} /> : null}
         </div>
       </div>
 
@@ -200,219 +102,56 @@ export function SiteNavbar() {
   );
 }
 
-function PrimaryNavItem({
-  item,
-  pathname,
-}: {
-  item: (typeof navItems)[number];
-  pathname: string;
-}) {
-  const Icon = item.icon;
-  const isActive = isCurrentPath(pathname, "href" in item ? item.href : undefined);
-
-  if ("disabled" in item && item.disabled) {
-    return (
-      <button
-        aria-disabled="true"
-        className="type-button relative inline-flex min-h-11 cursor-not-allowed items-center gap-2 rounded-full px-4 text-on-surface-variant/50"
-        title="Chat is coming soon"
-        type="button"
+function LandingActions() {
+  return (
+    <div className="hidden items-center gap-3 sm:flex">
+      <Link
+        className="type-button inline-flex min-h-11 cursor-pointer items-center rounded-full border border-primary/70 px-5 text-primary transition-all hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
+        href={AUTH_LOGIN_PATH}
       >
-        <Icon className="size-5 stroke-[2.2]" />
-        <span>{item.label}</span>
-        {"hasDot" in item && item.hasDot ? (
-          <span className="absolute right-2 top-2 size-1.5 rounded-full bg-outline-variant" />
-        ) : null}
-      </button>
-    );
-  }
-
-  return (
-    <Link
-      aria-current={isActive ? "page" : undefined}
-      className={cn(
-        "type-button relative inline-flex min-h-11 items-center gap-2 rounded-full px-4 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95",
-        isActive
-          ? "text-primary"
-          : "text-on-surface-variant hover:bg-surface-container-low hover:text-primary",
-      )}
-      href={item.href}
-    >
-      <Icon
-        className={cn(
-          "size-5 stroke-[2.2]",
-          isActive && item.label !== "Home" && item.label !== "Chat" ? "fill-current" : "",
-        )}
-      />
-      <span>{item.label}</span>
-    </Link>
-  );
-}
-
-function CompactMenu({
-  isLanding,
-  onNavigate,
-  pathname,
-}: {
-  isLanding: boolean;
-  onNavigate: () => void;
-  pathname: string;
-}) {
-  return (
-    <div className="border-t border-outline-variant/20 bg-surface/95 px-4 pb-4 shadow-[0_16px_32px_rgba(34,25,25,0.08)] backdrop-blur-md lg:hidden">
-      <nav aria-label="Compact primary" className="grid gap-1 py-3">
-        {navItems.map((item) => (
-          <CompactNavItem
-            key={item.label}
-            item={item}
-            onNavigate={onNavigate}
-            pathname={pathname}
-          />
-        ))}
-      </nav>
-
-      {isLanding ? (
-        <div className="grid grid-cols-2 gap-3 border-t border-outline-variant/20 pt-4 sm:hidden">
-          <Link
-            className="type-button inline-flex min-h-11 items-center justify-center rounded-full border border-primary/70 px-4 text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
-            href={AUTH_LOGIN_PATH}
-            onClick={onNavigate}
-          >
-            Login
-          </Link>
-          <Link
-            className="type-button inline-flex min-h-11 items-center justify-center rounded-full bg-primary-container px-4 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
-            href={AUTH_REGISTER_PATH}
-            onClick={onNavigate}
-          >
-            Register Free
-          </Link>
-        </div>
-      ) : null}
+        Login
+      </Link>
+      <Link
+        className="type-button inline-flex min-h-11 cursor-pointer items-center rounded-full bg-primary-container px-5 text-white shadow-[0_8px_20px_rgba(154,0,41,0.14)] transition-all hover:bg-primary hover:shadow-[0_10px_26px_rgba(154,0,41,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95"
+        href={AUTH_REGISTER_PATH}
+      >
+        Register Free
+      </Link>
     </div>
   );
 }
 
-function CompactNavItem({
-  item,
-  onNavigate,
-  pathname,
-}: {
-  item: (typeof navItems)[number];
-  onNavigate: () => void;
-  pathname: string;
-}) {
-  const Icon = item.icon;
-  const isActive = isCurrentPath(pathname, "href" in item ? item.href : undefined);
-
-  if ("disabled" in item && item.disabled) {
-    return (
-      <button
-        aria-disabled="true"
-        className="type-button flex min-h-11 cursor-not-allowed items-center gap-3 rounded-xl px-3 text-on-surface-variant/50"
-        title="Chat is coming soon"
-        type="button"
+function MemberActions({ pathname }: { pathname: string }) {
+  return (
+    <>
+      <MemberIconLink
+        active={pathname.startsWith(NOTIFICATIONS_PATH)}
+        href={NOTIFICATIONS_PATH}
+        label="Open notifications"
       >
-        <Icon className="size-5" />
-        <span>{item.label}</span>
-        <span className="type-micro ml-auto rounded-full bg-surface-container-high px-2 py-0.5">
-          Soon
-        </span>
-      </button>
-    );
-  }
+        <NotificationIcon className="size-6 stroke-[2.1]" />
+      </MemberIconLink>
 
-  return (
-    <Link
-      aria-current={isActive ? "page" : undefined}
-      className={cn(
-        "type-button flex min-h-11 items-center gap-3 rounded-xl px-3 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-[0.99]",
-        isActive
-          ? "text-primary"
-          : "text-on-surface-variant hover:bg-surface-container-low hover:text-primary",
-      )}
-      href={item.href}
-      onClick={onNavigate}
-    >
-      <Icon
+      <Link
+        href={MY_PROFILE_PATH}
+        aria-label="Open my profile"
+        aria-current={pathname.startsWith(MY_PROFILE_PATH) ? "page" : undefined}
         className={cn(
-          "size-5",
-          isActive && item.label !== "Home" && item.label !== "Chat" ? "fill-current" : "",
+          "relative size-11 shrink-0 overflow-hidden rounded-full border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95",
+          pathname.startsWith(MY_PROFILE_PATH)
+            ? "border-primary shadow-[0_0_0_4px_rgba(154,0,41,0.08)]"
+            : "border-outline-variant hover:border-primary",
         )}
-      />
-      <span>{item.label}</span>
-    </Link>
-  );
-}
-
-export function SiteBottomNav() {
-  const pathname = usePathname();
-
-  if (!isAppRoute(pathname)) {
-    return null;
-  }
-
-  return (
-    <nav
-      aria-label="App navigation"
-      className="fixed inset-x-0 bottom-0 z-50 grid h-20 grid-cols-5 items-center border-t border-outline-variant/20 bg-surface/92 px-2 shadow-[0_-8px_28px_rgba(34,25,25,0.08)] backdrop-blur-lg md:hidden"
-    >
-      {appBottomNavItems.map((item) => (
-        <BottomNavItem key={item.label} item={item} pathname={pathname} />
-      ))}
-    </nav>
-  );
-}
-
-function BottomNavItem({
-  item,
-  pathname,
-}: {
-  item: (typeof appBottomNavItems)[number];
-  pathname: string;
-}) {
-  const Icon = item.icon;
-  const isActive = isCurrentPath(pathname, "href" in item ? item.href : undefined);
-
-  if ("disabled" in item && item.disabled) {
-    return (
-      <button
-        aria-disabled="true"
-        className="relative flex min-h-14 cursor-not-allowed flex-col items-center justify-center gap-1 rounded-xl px-1 text-on-surface-variant/45"
-        title="Chat is coming soon"
-        type="button"
       >
-        <Icon className="size-5" />
-        <span className="type-micro max-w-full truncate">
-          {item.label}
-        </span>
-        {"hasDot" in item && item.hasDot ? (
-          <span className="absolute right-4 top-2 size-1.5 rounded-full bg-outline-variant" />
-        ) : null}
-      </button>
-    );
-  }
-
-  return (
-    <Link
-      aria-current={isActive ? "page" : undefined}
-      className={cn(
-        "relative flex min-h-14 flex-col items-center justify-center gap-1 rounded-xl px-1 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 active:scale-95",
-        isActive
-          ? "text-primary"
-          : "text-on-surface-variant hover:bg-surface-container-low hover:text-primary",
-      )}
-      href={item.href}
-    >
-      <Icon
-        className={cn(
-          "size-5",
-          isActive && item.label !== "Chat" && item.label !== "Profile" ? "fill-current" : "",
-        )}
-      />
-      <span className="type-micro max-w-full truncate">
-        {item.label}
-      </span>
-    </Link>
+        <Image
+          fill
+          priority
+          sizes="44px"
+          src="/images/landing/stories/ananya-rahul.jpg"
+          alt="Signed-in member profile photo"
+          className="object-cover"
+        />
+      </Link>
+    </>
   );
 }

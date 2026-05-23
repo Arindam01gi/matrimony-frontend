@@ -4,7 +4,7 @@ import { HeroSearchCard } from "@/components/landing/hero-search-card";
 
 export function LandingHero() {
   return (
-    <section className="relative flex min-h-[720px] items-center overflow-hidden py-14 md:h-[820px] md:py-0">
+    <section className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-12 md:h-[820px] md:min-h-[720px] md:py-0">
       <div className="absolute inset-0">
         <Image
           alt="A cinematic premium portrait of a Bengali couple in elegant wedding attire."
@@ -13,7 +13,7 @@ export function LandingHero() {
           priority
           quality={100}
           sizes="100vw"
-          src="/images/landing/hero/bengali-couple-hero.png"
+          src="/images/landing/hero/bengali-couple-hero-v2.png"
         />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,248,247,0.95)_0%,rgba(255,248,247,0.78)_48%,rgba(255,248,247,0.28)_78%,rgba(255,248,247,0.06)_100%)] md:bg-[linear-gradient(to_right,rgba(255,248,247,0.94)_0%,rgba(255,248,247,0.72)_35%,rgba(255,248,247,0.24)_62%,rgba(255,248,247,0)_84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-background to-transparent" />
